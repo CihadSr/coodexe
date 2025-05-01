@@ -8,19 +8,19 @@ const projectsShowcase = [
     title: "E-Ticarette Dönüşüm Hikayesi",
     description: "Kapsamlı kullanıcı deneyimi ve performans optimizasyonlarıyla satışlar %42 arttı.",
     impact: "Modern e-ticaret altyapısıyla ROI 2 katına çıktı.",
-    image: "/images/ecommerce.png",
+    image: "/images/emlak.png",
   },
   {
     title: "Kurumsal Güvenin Dijital Yansıması",
     description: "Prestijli bir web kimliğiyle marka algısı yeniden tanımlandı.",
     impact: "Arama görünürlüğü %200, güven puanı %95 yükseldi.",
-    image: "/images/corporate.png",
+    image: "/images/avukat.png",
   },
   {
     title: "Startup’lara Yatırımcı Etkisi",
     description: "Yüksek etkileşimli açılış sayfasıyla hedef kitleye tam isabet.",
     impact: "İlk hafta içinde 1000+ kayıt, %18 dönüşüm oranı.",
-    image: "/images/startup.png",
+    image: "/images/restorant.png",
   }
 ];
 
