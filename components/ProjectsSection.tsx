@@ -5,21 +5,21 @@ import Image from "next/image";
 
 const projectsShowcase = [
   {
-    title: "E-Ticarette Dönüşüm Hikayesi",
-    description: "Kapsamlı kullanıcı deneyimi ve performans optimizasyonlarıyla satışlar %42 arttı.",
-    impact: "Modern e-ticaret altyapısıyla ROI 2 katına çıktı.",
+    title: "Emlak Web Vitriniyle Güveni Artırın",
+    description: "Modern tasarım, hızlı erişim ve lokasyon vurgusuyla müşterilerin dikkatini çekin.",
+    impact: "Sadece 1 ayda %35 daha fazla teklif talebi alındı.",
     image: "/images/emlak.png",
   },
   {
-    title: "Kurumsal Güvenin Dijital Yansıması",
-    description: "Prestijli bir web kimliğiyle marka algısı yeniden tanımlandı.",
-    impact: "Arama görünürlüğü %200, güven puanı %95 yükseldi.",
+    title: "Hukuk Büroları İçin Dijital Prestij",
+    description: "Kurumsal duruşa uygun web sitesiyle güven verin, online randevu kolaylığı sağlayın.",
+    impact: "Google görünürlüğü %150 artarken, danışan başvuruları %40 yükseldi.",
     image: "/images/avukat.png",
   },
   {
-    title: "Startup’lara Yatırımcı Etkisi",
-    description: "Yüksek etkileşimli açılış sayfasıyla hedef kitleye tam isabet.",
-    impact: "İlk hafta içinde 1000+ kayıt, %18 dönüşüm oranı.",
+    title: "Restoranlar İçin İştah Açan Arayüz",
+    description: "Menü, rezervasyon ve görselleri bir araya getiren etkileyici vitrin deneyimi.",
+    impact: "Ziyaretçi dönüşüm oranı ilk haftada %25 arttı.",
     image: "/images/restorant.png",
   }
 ];
