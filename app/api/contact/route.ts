@@ -43,3 +43,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "Mail gönderme hatası." }, { status: 500 });
   }
 }
+console.log("🚀 API çalıştı!");
