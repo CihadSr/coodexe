@@ -7,11 +7,11 @@ import WhyUs from "@/components/whyus";
 import Roadmap from "@/components/roadmap";
 import About from "@/components/about";
 import ProjectsSection from "@/components/ProjectsSection";
-import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 import SeoContentBlock from "@/components/SeoContentBlock";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
@@ -25,8 +25,7 @@ export default function Home() {
       <Roadmap />
       <Testimonials />
       <SeoContentBlock />
-      <CallToAction />
-      <ContactForm />
+      <ContactSection />
       <Footer />
     </main>
   );

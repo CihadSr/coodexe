@@ -1,142 +1,149 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "", company: "" });
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("📨 Form gönderiliyor:", formData);
+    setStatus("sending");
 
     const token = await recaptchaRef.current?.executeAsync();
-    if (!token) {
-      console.error("🚫 reCAPTCHA token alınamadı.");
-      setErrorMsg("Güvenlik doğrulaması başarısız oldu. Sayfayı yenileyin.");
-      setStatus("error");
-      return;
-    }
-
     recaptchaRef.current?.reset();
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, token }),
+        body: JSON.stringify({
+          ...formData,
+          company: "", // honeypot
+          token,
+        }),
       });
 
-      const result = await response.json();
-      console.log("📬 API yanıtı:", result);
-
-      if (!response.ok) {
-        console.error("❌ API hatası:", result.message);
-        setErrorMsg(result.message || "Bilinmeyen hata");
-        setStatus("error");
-        return;
-      }
+      if (!response.ok) throw new Error("Gönderim başarısız.");
 
       setStatus("success");
-      setErrorMsg("");
-      setFormData({ name: "", email: "", message: "", company: "" });
-    } catch (error: any) {
-      console.error("💣 İstek sırasında hata:", error);
-      setErrorMsg("İstek gönderilemedi, ağ hatası olabilir.");
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+
+    } catch (error) {
       setStatus("error");
     }
   };
 
   return (
-    <section id="contact" className="py-24 bg-gray-100 dark:bg-neutral-900 px-6">
-      <div className="max-w-3xl mx-auto text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-8"
-        >
-          Bizimle İletişime Geç
-        </motion.h2>
+    <div id="contact" className="max-w-xl mx-auto px-4 py-10 bg-white shadow-xl rounded-2xl scroll-mt-20">
+      {status === "success" ? (
+        <div className="text-center">
+          <h3 className="text-xl font-semibold text-green-600 mb-2">✅ Mesajınız iletildi!</h3>
+          <p className="text-gray-600">En kısa sürede sizinle iletişime geçeceğiz.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-5">
 
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="bg-white dark:bg-[#1a1a1a] shadow-xl rounded-xl p-8 grid gap-6 text-left"
-        >
-          <input
-            type="text"
-            name="company"
-            className="hidden"
-            value={formData.company}
-            onChange={handleChange}
-            aria-hidden="true"
-            tabIndex={-1}
-          />
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Ad Soyad *</label>
+            <input
+              id="name"
+              name="name"
+              required
+              placeholder="Adınızı yazın"
+              value={formData.name}
+              onChange={handleChange}
+              className="input"
+            />
+          </div>
 
-          <input
-            name="name"
-            type="text"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Adınız"
-            className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#2b2b2b] text-gray-800 dark:text-white"
-          />
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-Posta *</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="E-posta adresiniz"
+              value={formData.email}
+              onChange={handleChange}
+              className="input"
+            />
+          </div>
 
-          <input
-            name="email"
-            type="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="E-posta adresiniz"
-            className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#2b2b2b] text-gray-800 dark:text-white"
-          />
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Telefon (Opsiyonel)</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="Telefon numaranız"
+              value={formData.phone}
+              onChange={handleChange}
+              className="input"
+            />
+          </div>
 
-          <textarea
-            name="message"
-            rows={5}
-            required
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Mesajınız"
-            className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#2b2b2b] text-gray-800 dark:text-white"
-          ></textarea>
+          <div>
+            <label htmlFor="subject" className="block text-sm font-medium text-gray-700">Konu</label>
+            <select
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              className="input"
+            >
+              <option value="">Konu seçin</option>
+              <option value="Teklif">Teklif Talebi</option>
+              <option value="Destek">Teknik Destek</option>
+              <option value="İş Birliği">İş Birliği</option>
+              <option value="Diğer">Diğer</option>
+            </select>
+          </div>
 
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-            size="invisible"
-          />
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Mesaj *</label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              required
+              placeholder="Mesajınızı yazın"
+              value={formData.message}
+              onChange={handleChange}
+              className="input"
+            />
+          </div>
+
+          <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} size="invisible" ref={recaptchaRef} />
 
           <button
             type="submit"
-            className="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full transition-all"
+            disabled={status === "sending"}
+            className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition"
           >
-            Gönder
+            {status === "sending" ? "Gönderiliyor..." : "Mesaj Gönder"}
           </button>
 
-          {status === "success" && (
-            <p className="text-sm text-green-600 mt-4">✅ Mesaj başarıyla gönderildi!</p>
-          )}
           {status === "error" && (
-            <p className="text-sm text-red-600 mt-4">❌ {errorMsg}</p>
+            <p className="text-red-500 text-sm text-center">❌ Mesaj gönderilemedi. Lütfen tekrar deneyin.</p>
           )}
-        </motion.form>
-      </div>
-    </section>
+        </form>
+      )}
+    </div>
   );
 }
