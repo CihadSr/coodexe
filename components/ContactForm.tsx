@@ -24,8 +24,21 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("sending");
 
-    const token = await recaptchaRef.current?.executeAsync();
-    recaptchaRef.current?.reset();
+    let rawToken: string | null | undefined = null;
+
+    try {
+      rawToken = await recaptchaRef.current?.executeAsync();
+      recaptchaRef.current?.reset();
+    } catch (err) {
+      console.error("ReCAPTCHA token alınamadı:", err);
+    }
+
+    const token: string | null = rawToken ?? null;
+
+    if (!token) {
+      setStatus("error");
+      return;
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -33,17 +46,18 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          company: "", // honeypot
+          company: "",
           token,
         }),
       });
 
-      if (!response.ok) throw new Error("Gönderim başarısız.");
+      if (!response.ok) throw new Error("Gönderim başarısız");
 
       setStatus("success");
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
 
     } catch (error) {
+      console.error("Form gönderim hatası:", error);
       setStatus("error");
     }
   };
@@ -57,7 +71,6 @@ export default function ContactForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
-
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Ad Soyad *</label>
             <input
