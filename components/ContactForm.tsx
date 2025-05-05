@@ -15,7 +15,9 @@ export default function ContactForm() {
     message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -30,10 +32,12 @@ export default function ContactForm() {
       rawToken = await recaptchaRef.current?.executeAsync();
       recaptchaRef.current?.reset();
     } catch (err) {
-      console.error("ReCAPTCHA token alınamadı:", err);
+      console.error("ReCAPTCHA hatası:", err);
+      setStatus("error");
+      return;
     }
 
-    const token: string | null = rawToken ?? null;
+    const token: string = rawToken ?? "";
 
     if (!token) {
       setStatus("error");
@@ -46,7 +50,7 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          company: "",
+          company: "", // honeypot
           token,
         }),
       });
@@ -54,8 +58,13 @@ export default function ContactForm() {
       if (!response.ok) throw new Error("Gönderim başarısız");
 
       setStatus("success");
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
     } catch (error) {
       console.error("Form gönderim hatası:", error);
       setStatus("error");
@@ -77,6 +86,7 @@ export default function ContactForm() {
               id="name"
               name="name"
               required
+              autoComplete="off"
               placeholder="Adınızı yazın"
               value={formData.name}
               onChange={handleChange}
@@ -91,6 +101,7 @@ export default function ContactForm() {
               name="email"
               type="email"
               required
+              autoComplete="off"
               placeholder="E-posta adresiniz"
               value={formData.email}
               onChange={handleChange}
@@ -104,6 +115,7 @@ export default function ContactForm() {
               id="phone"
               name="phone"
               type="tel"
+              autoComplete="off"
               placeholder="Telefon numaranız"
               value={formData.phone}
               onChange={handleChange}
@@ -135,6 +147,7 @@ export default function ContactForm() {
               name="message"
               rows={5}
               required
+              autoComplete="off"
               placeholder="Mesajınızı yazın"
               value={formData.message}
               onChange={handleChange}
@@ -142,7 +155,11 @@ export default function ContactForm() {
             />
           </div>
 
-          <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} size="invisible" ref={recaptchaRef} />
+          <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+            size="invisible"
+            ref={recaptchaRef}
+          />
 
           <button
             type="submit"
