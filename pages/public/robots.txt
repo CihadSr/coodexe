@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://coodexe.com
-
-# Sitemaps
-Sitemap: https://coodexe.com/sitemap.xml
