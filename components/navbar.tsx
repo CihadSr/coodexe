@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -30,7 +31,9 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sectionElements = sections.map(({ id }) => document.getElementById(id)).filter(Boolean);
+    const sectionElements = sections
+      .map(({ id }) => document.getElementById(id))
+      .filter(Boolean);
     if (observer.current) observer.current.disconnect();
 
     observer.current = new IntersectionObserver(
@@ -56,8 +59,18 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-        <Link href="#hero" className="text-2xl font-bold text-gray-900 dark:text-white">
-          Coodexe
+        {/* Logo ve yazı */}
+        <Link href="#hero" className="flex items-center space-x-2">
+          <Image
+            src="/images/logo.png"
+            alt="Coodexe Logo"
+            width={36}
+            height={36}
+            priority
+          />
+          <span className="text-2xl font-bold text-gray-900 dark:text-white">
+            Coodexe
+          </span>
         </Link>
 
         <nav className="hidden md:flex space-x-6">
