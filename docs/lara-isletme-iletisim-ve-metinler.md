@@ -23,7 +23,71 @@ Her yüz yüze görüşme 5 adımdır; işletmeye özel metinler bu iskeletin do
 
 ---
 
-# 🔥 SICAK HEDEFLER — İşletme Dosyaları
+# 🏠 DEMİRCİKARA — KAPI KOMŞUSU HEDEFLER (önce bunlar)
+
+> Kullanıcının konumu: **Demircikara Mah., Muratpaşa.** Buradaki işletmeler yürüme mesafesinde — "komşuyum" açılışı burada %100 gerçek. Strateji: ilk hafta sadece bu mahalle + Burhanettin Onat Cad. ve Narenciye Cad. hattı. İlk 1-2 referansı burada al, sonra Lara hedeflerine referansla git.
+> Burhanettin Onat Cad. bir **sağlık koridoru** (diş klinikleri yoğun): Hospitadent ve MRK Dental gibi kurumsallar var — onları atla; aralarındaki bağımsız tek hekimli klinikleri yürüyerek tara, sitesizleri yakala.
+
+## D1. Neyla Cafe & Bistro (Demircikara, 1429. Sk. No:24)
+
+**İletişim:** IG: @neylacafebistro · Facebook: /neylacafe · TripAdvisor'da listeli · Telefonu Maps'ten doğrula
+**Tespit:** Instagram'ı aktif, TripAdvisor kaydı var — ama kayıtlarda listelenen sitesi **neylacafe.com ÖLÜ** (domain çözülmüyor, test edildi 2026-07-31).
+**İhtiyaç:** Google/TripAdvisor'dan siteye tıklayan müşteri (özellikle turist) ölü linke düşüyor; menü ve rezervasyon tek yerde değil.
+**Sağlayacağımız fayda:** Ölü domaini diriltip modern tek sayfa + çok dilli menü + rezervasyon/yol tarifi → mevcut TripAdvisor/IG trafiğini masaya oturan müşteriye çevirmek.
+
+**WhatsApp/DM metni:**
+> Merhaba, ben Cihad — Demircikara'da oturuyorum, birkaç sokak ötenizdeyim. Size müşteri olarak da geleceğim ama önce bir şey haber vermek istedim: Google ve TripAdvisor kayıtlarınızda web siteniz neylacafe.com olarak görünüyor, fakat site açılmıyor — domain tamamen ölü. Yani sizi araştıran müşteri (özellikle TripAdvisor'dan gelen turist) kırık bir linke tıklıyor. Ben web sistemleri kuruyorum; bu domaini diriltip menü + rezervasyon + yol tarifi olan modern bir sayfayı 1 haftada açabilirim. Yarın bir kahve içmeye geleyim, telefondan 5 dakikada göstereyim — uygun mu?
+
+**Yüz yüze konuşma metni:**
+> **Açılış:** (Önce otur, bir şey iç.) "Ben Cihad, hemen şu sokakta oturuyorum. Mekân çok iyiymiş, geç kalmışım. Sahibi siz misiniz? Aslında size bir şey göstermek istiyorum — kötü haber ama çözümü kolay."
+> **Gösterim:** "Google'da adınızı aratıyorum… bakın, işletme kaydınızda 'neylacafe.com' yazıyor. Tıklıyorum — açılmıyor. TripAdvisor'daki kaydınızda da aynı link var. Turist buraya tıklayıp boş sayfa görüyor."
+> **Teşhis:** "Bu domaini kim almıştı, yenilenmedi mi? … Müşterinizin ne kadarı turist/TripAdvisor'dan geliyor? … Rezervasyonu nasıl alıyorsunuz?"
+> **Fayda:** "İki seçenek: domaini kurtarıp üzerine modern bir sayfa koyarız ya da temiz bir yenisini açarız. İçinde üç dilde menü, rezervasyon butonu, yol tarifi. TripAdvisor ve Instagram'dan gelen ilgi artık boşa düşmez. Komşunuzum — iş bitince de iki sokak ötedeyim, kaybolmam."
+> **Kapanış:** "Taslağı 3 günde hazırlarım, beğenmezseniz ücret yok. Cuma aynı masada göstereyim mi?"
+
+## D2. Altaylar Fırın Kafe (Narenciye Cd. 8/A-8B)
+
+**İletişim:** Tel: +90 532 313 41 23 · Facebook sayfası var · Yandex puanı 4.3
+**Tespit:** Sadece Facebook + harita kayıtları; site/Google profili zayıf.
+**İhtiyaç:** Mahalle fırın-kafesi; sabah ürünleri ve pasta siparişi telefonla dönüyor, Google'da menü/ürün görünmüyor.
+**Sağlayacağımız fayda:** Google profili + tek sayfa (ürünler, pasta sipariş formu, WhatsApp sipariş) → telefon trafiğini yazılı siparişe çevirmek, özel gün pastası gibi yüksek marjlı işleri artırmak.
+
+**WhatsApp metni:**
+> Merhaba, ben Cihad — Demircikara'da oturuyorum, fırınınızın sürekli müşterisi olan bir komşunuzum. Şunu fark ettim: Google'da "Demircikara fırın" ya da "Antalya doğum günü pastası" arayan biri sizi bulamıyor — sadece harita kaydınız var, ürünleriniz ve pasta siparişi bilgisi görünmüyor. Oysa pasta siparişi tam olarak internetten araştırılan bir iş. Tek sayfalık bir site (ürünler + pasta sipariş formu + WhatsApp hattı) ve düzgün Google profiliyle bu aramaları size çeviririm. Zaten her gün önünüzden geçiyorum — yarın 10 dakika ayırabilir misiniz?
+
+**Yüz yüze konuşma metni:** Lara Pet Kuaför iskeletiyle aynı akış; kanca farkı: "Doğum günü pastası sipariş etmek isteyen mahalleli şu an Instagram'daki büyük pastanelere gidiyor, çünkü sizin ürünleriniz internette yok. Vitrindeki ürünlerin fotoğrafı + fiyatı + 'WhatsApp'tan sipariş ver' butonu — bu kadar."
+
+## D3. Komaş Döner Nazım Usta (Burhanettin Onat Cd. No:106)
+
+**İletişim:** Facebook: /komasdoner · Saat: 11:00-21:00 · Telefonu Maps'ten doğrula
+**Tespit:** Sadece Facebook; Yemeksepeti bölge listesinde benzer esnaf lokantaları var — kendi sipariş kanalı yok.
+**İhtiyaç:** Paket servis ya telefonla ya platform komisyonuyla; öğle yoğunluğunda telefon meşgul.
+**Sağlayacağımız fayda:** QR menü + WhatsApp sipariş hattı + Google profili → komisyonsuz paket servis, meşgul telefon yüzünden kaçan siparişin geri kazanılması.
+
+**WhatsApp metni:**
+> Merhaba Nazım Usta, ben Cihad — Demircikara'da oturuyorum, dönerinizi zaten biliyorum. Mesleğim web sistemleri kurmak, o gözle şunu fark ettim: paket sipariş vermek isteyen mahalleli sizi Google'da aratınca ne menünüzü ne fiyatınızı görüyor; Yemeksepeti'ndeki yerler ise her siparişten %30'a varan komisyon ödüyor. Size komisyonsuz bir düzen kurabilirim: QR menü + "WhatsApp'tan sipariş" hattı + düzgün Google kaydı. Öğlen telefon meşgulken sipariş yazılı gelir, kimse kaçmaz. Yarın öğle yemeğine geleceğim zaten — 5 dakika konuşalım mı?
+
+**Yüz yüze konuşma metni:** Aynı iskelet; gösterimde Yemeksepeti komisyon hesabını kâğıda yaz: "Ayda 300 paket × ortalama sepet × %30 = platforma giden para. WhatsApp siparişinde bu sıfır."
+
+## D4. TiM Kuaför (Burhanettin Onat Cad. No:81/B)
+
+**İletişim:** Tel: +90 532 399 95 17
+**Tespit:** Site yok, dizin kayıtlarıyla yetiniyor; balyaj/Brezilya fönü/kaynak gibi yüksek bilet hizmetleri var.
+**İhtiyaç:** Yüksek cirolu işlemler (balyaj, kaynak) araştırılarak seçilen hizmetler — müşteri portföy görmeden gelmiyor; randevu telefonla.
+**Sağlayacağımız fayda:** Portföy galerisi + online randevu + Google profili → yüksek biletli işlemlerde "işini göster, randevuyu kap" dönüşümü.
+
+**WhatsApp metni:**
+> Merhaba, ben Cihad — Burhanettin Onat'ta, birkaç bina ötenizde oturuyorum. Web sistemleri kuruyorum ve şunu fark ettim: balyaj ya da kaynak yaptıracak biri önce iş örneği görmek istiyor ve Google'da "Antalya balyaj" diye arıyor. O aramada portföyü olan salonlar çıkıyor — siz çıkmıyorsunuz, çünkü işleriniz sadece salonun içinde. Çalışmalarınızın galerisi + online randevu olan tek sayfalık bir siteyle bu aramaları randevuya çeviririz. Komşunuzum, yarın 10 dakika uğrasam yeter — uygun mu?
+
+**Yüz yüze konuşma metni:** Roux Kuaför iskeletini kullan (No. 8); Kérastase vurgusu yerine balyaj/kaynak portföyü vurgusu.
+
+## D5. Burhanettin Onat sağlık koridoru — yerinde tarama görevi
+
+Hospitadent (No:59B/D, 0242 455 59 99) ve MRK Dental kurumsal — atla. Ama aynı cadde üzerinde bağımsız muayenehane/poliklinik çok: yürüyerek tabelaları not al, akşam Maps'ten sitesi olmayanları işaretle. Klinik konuşma metni önceki belgede hazır (segment 4.7). Sağlık turizmi kancası burada da geçerli — cadde şehir hastane trafiğinin merkezinde.
+
+---
+
+# 🔥 LARA SICAK HEDEFLERİ — İşletme Dosyaları
 
 ## 1. Lara Fitness Center (Güzeloba)
 
@@ -214,6 +278,11 @@ Her yüz yüze görüşme 5 adımdır; işletmeye özel metinler bu iskeletin do
 
 | # | İşletme | Telefon doğrulandı? | 1. temas (tarih/kanal) | Cevap | Ziyaret | Teklif | Sonuç |
 |---|---------|--------------------:|------------------------|-------|---------|--------|-------|
+| D1 | Neyla Cafe & Bistro (Demircikara) | ☐ | | | | | |
+| D2 | Altaylar Fırın Kafe (Demircikara) | ☐ | | | | | |
+| D3 | Komaş Döner (Demircikara) | ☐ | | | | | |
+| D4 | TiM Kuaför (Demircikara) | ☐ | | | | | |
+| D5 | B. Onat klinik taraması | ☐ | | | | | |
 | 1 | Lara Fitness Center | ☐ | | | | | |
 | 2 | LARA Güzellik Salonu | ☐ | | | | | |
 | 3 | Lara Beauty Center | ☐ | | | | | |
@@ -225,5 +294,5 @@ Her yüz yüze görüşme 5 adımdır; işletmeye özel metinler bu iskeletin do
 | 9 | Lara Kuaför | ☐ | | | | | |
 | 10 | SportsLife / Plus | ☐ | | | | | |
 
-**Uygulama sırası önerisi:** 1 → 7 → 4 → 3 → 8 (küçük, hızlı kapanan işler önce; referans biriktir) → sonra 5 ve 6 (büyük biletler; referansla git).
+**Uygulama sırası önerisi:** Önce mahalle: D1 (Neyla — ölü site, en güçlü kanca) → D2 → D3 → D4 hepsi yürüme mesafesi, yüz yüze başla. İlk referans geldikten sonra Lara: 1 (Lara Fitness — ölü site) → 7 → 4 → 3 → 8 → en son büyük biletler 5 ve 6.
 **Not:** Günde en fazla 5-8 temas; her mesaj işletmeye özel kalmalı. Numaralar Maps'ten doğrulanmadan mesaj atma — yanlış numaraya giden "sitiniz ölü" mesajı itibar kaybettirir.
