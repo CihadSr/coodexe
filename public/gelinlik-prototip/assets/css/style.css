@@ -1132,3 +1132,6 @@ a:hover > .ph--zoom img,
   font-size: 10px;
   margin-bottom: 6px;
 }
+
+/* Ana sayfa galerisi: figure varsayılan yan boşluğu ızgarada taşma yapar */
+.gallery > figure { margin: 0; }
