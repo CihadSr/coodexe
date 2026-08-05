@@ -1,0 +1,1230 @@
+<title>Atölye Vera — Bridal Couture</title>
+
+<style>
+/* ============================================================
+   ATÖLYE VERA — BRIDAL COUTURE  ·  tasarım önizlemesi
+   Tasarım dili: "atölye kalıp kâğıdı" — teyel çizgileri,
+   köşe hizalama işaretleri, ölçü rayı, fildişi zemin.
+   ============================================================ */
+
+:root{
+  /* --- Palet ------------------------------------------------ */
+  --ivory:      #faf7f2;
+  --parchment:  #f1eae0;
+  --paper:      #fffdfa;
+  --champagne:  #c3a268;
+  --bronze:     #8a6b3a;
+  --ink:        #2a2622;
+  --ink-soft:   #4a443c;
+  --muted:      #756b5e;
+  --blush:      #e9dad3;
+  --line:       #ddd3c4;
+  --whatsapp:   #1f9d59;
+
+  /* --- Tipografi ------------------------------------------- */
+  --serif: Georgia, "Times New Roman", "Nimbus Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+  --step--1: clamp(.78rem, .76rem + .1vw, .84rem);
+  --step-0:  clamp(.95rem, .92rem + .16vw, 1.05rem);
+  --step-1:  clamp(1.1rem, 1.04rem + .3vw, 1.3rem);
+  --step-2:  clamp(1.5rem, 1.3rem + .9vw, 2.1rem);
+  --step-3:  clamp(2rem, 1.6rem + 1.9vw, 3.2rem);
+  --step-4:  clamp(2.7rem, 1.9rem + 3.6vw, 5.4rem);
+
+  /* --- Ritim ----------------------------------------------- */
+  --gut: clamp(1.25rem, 4vw, 2.5rem);
+  --sec: clamp(4.5rem, 10vw, 9rem);
+  --max: 1240px;
+
+  --fast: 150ms;
+  --normal: 250ms;
+  --slow: 400ms;
+  --ease: cubic-bezier(.22,.61,.36,1);
+
+  /* Kâğıt dokusu — tek renkli ince gren */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+
+  color-scheme: light;
+}
+
+/* Bilinçli tercih: bu sayfa her koşulda fildişi/couture kimliğini korur.
+   Koyu tema dayatması marka görünümünü bozduğu için nötrlenir. */
+:root[data-theme="dark"], :root[data-theme="light"]{ color-scheme: light; }
+@media (prefers-color-scheme: dark){ :root{ color-scheme: light; } }
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:var(--step-0);
+  line-height:1.7;
+  /* clip (hidden değil) — position:sticky navigasyonu bozmaz */
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+}
+
+img,svg{ max-width:100%; }
+a{ color:inherit; }
+
+:focus-visible{
+  outline:2px solid var(--bronze);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* ---------- Ortak yapı taşları ---------- */
+.wrap{ width:100%; max-width:var(--max); margin-inline:auto; padding-inline:var(--gut); }
+
+.eyebrow{
+  font-size:var(--step--1);
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-weight:600;
+  color:var(--bronze);
+  margin:0;
+}
+.eyebrow--muted{ color:var(--muted); }
+
+.display{
+  font-family:var(--serif);
+  font-weight:400;
+  color:var(--ink);
+  line-height:1.04;
+  letter-spacing:-.015em;
+  text-wrap:balance;
+  margin:0;
+}
+.display em{ font-style:italic; color:var(--bronze); }
+
+.lede{
+  max-width:56ch;
+  color:var(--muted);
+  margin:0;
+}
+
+.section{ padding-block:var(--sec); position:relative; }
+.section__head{ display:flex; flex-direction:column; gap:.9rem; margin-bottom:clamp(2.5rem,6vw,4rem); }
+.section__head .display{ font-size:var(--step-3); }
+
+/* Teyel (basting) çizgisi — tekrar eden ayraç motifi */
+.seam{
+  height:1px; border:0; margin:0;
+  background-image:linear-gradient(90deg,var(--line) 0 14px,transparent 14px 26px);
+  background-size:26px 1px;
+}
+
+/* Butonlar */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+  min-height:48px; padding:.85rem 1.6rem;
+  font-family:var(--sans); font-size:var(--step--1); font-weight:600;
+  text-transform:uppercase; letter-spacing:.14em;
+  text-decoration:none; cursor:pointer;
+  border:1px solid var(--ink); border-radius:0;
+  background:var(--ink); color:var(--ivory);
+  transition:transform var(--fast) var(--ease), opacity var(--fast) var(--ease);
+}
+.btn:hover{ transform:translateY(-2px); opacity:.9; }
+.btn:active{ transform:translateY(0); }
+.btn--ghost{ background:transparent; color:var(--ink); border-color:var(--line); }
+.btn--ghost:hover{ border-color:var(--bronze); }
+.btn--gold{ background:var(--bronze); border-color:var(--bronze); color:#fff; }
+
+/* ============================================================
+   1 · ÜST BAR + NAV
+   ============================================================ */
+.topbar{
+  background:var(--ink); color:#e8e1d6;
+  font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+}
+.topbar__in{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.35rem 1.5rem;
+  min-height:38px; padding-block:.45rem; text-align:center;
+}
+.topbar__in span:nth-child(2), .topbar__in span:nth-child(3){ display:none; }
+@media (min-width:760px){
+  .topbar__in{ justify-content:space-between; flex-wrap:nowrap; }
+  .topbar__in span:nth-child(2){ display:inline; color:var(--champagne); }
+  .topbar__in span:nth-child(3){ display:inline; }
+}
+
+.nav{
+  position:sticky; top:0; z-index:60;
+  background:var(--ivory);
+  background:color-mix(in srgb, var(--ivory) 88%, transparent);
+  backdrop-filter:blur(10px) saturate(1.1);
+  border-bottom:1px solid transparent;
+  transition:border-color var(--normal) var(--ease), background var(--normal) var(--ease);
+}
+.nav[data-stuck="true"]{ border-bottom-color:var(--line); background:color-mix(in srgb, var(--ivory) 96%, transparent); }
+.nav__in{ display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:74px; }
+
+.brand{ text-decoration:none; display:flex; flex-direction:column; gap:.15rem; line-height:1; }
+.brand__name{ font-family:var(--serif); font-size:1.32rem; letter-spacing:.06em; }
+.brand__sub{
+  font-size:.6rem; text-transform:uppercase; letter-spacing:.34em; color:var(--muted);
+}
+
+.nav__links{ display:none; gap:2rem; align-items:center; list-style:none; margin:0; padding:0; }
+.nav__links a{
+  position:relative; text-decoration:none; color:var(--ink-soft);
+  font-size:.8rem; text-transform:uppercase; letter-spacing:.16em; font-weight:500;
+  padding-block:.4rem;
+}
+.nav__links a::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:var(--bronze); transform:scaleX(0); transform-origin:left;
+  transition:transform var(--normal) var(--ease);
+}
+.nav__links a:hover::after, .nav__links a:focus-visible::after{ transform:scaleX(1); }
+
+.nav__cta{ display:none; }
+@media (min-width:940px){
+  .nav__links{ display:flex; }
+  .nav__cta{ display:inline-flex; }
+}
+
+.burger{
+  display:inline-flex; flex-direction:column; justify-content:center; gap:5px;
+  width:48px; height:48px; padding:0 12px;
+  background:none; border:1px solid var(--line); cursor:pointer;
+}
+.burger span{ display:block; height:1px; background:var(--ink); transition:transform var(--normal) var(--ease), opacity var(--fast) var(--ease); }
+.burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+@media (min-width:940px){ .burger{ display:none; } }
+
+.drawer{
+  display:grid; grid-template-rows:0fr;
+  transition:grid-template-rows var(--slow) var(--ease);
+  background:var(--paper); border-bottom:1px solid transparent;
+}
+.drawer[data-open="true"]{ grid-template-rows:1fr; border-bottom-color:var(--line); }
+.drawer__in{ overflow:hidden; visibility:hidden; transition:visibility 0s linear var(--slow); }
+.drawer[data-open="true"] .drawer__in{ visibility:visible; transition-delay:0s; }
+.drawer ul{ list-style:none; margin:0; padding:0 var(--gut) 1.4rem; display:flex; flex-direction:column; }
+/* yalnızca liste bağlantıları — .btn'i ezmemesi için ul ile sınırlandırıldı */
+.drawer ul a{
+  display:flex; align-items:center; min-height:52px;
+  text-decoration:none; color:var(--ink);
+  font-family:var(--serif); font-size:1.15rem;
+  border-bottom:1px solid var(--line);
+}
+.drawer .btn{ margin:1rem var(--gut) 1.6rem; }
+
+/* ============================================================
+   2 · HERO
+   ============================================================ */
+.hero{
+  position:relative; overflow:hidden;
+  /* üst bar (38) + nav (74) düşülür ki hero tam ekranı doldursun */
+  min-height:clamp(560px, calc(100vh - 112px), 900px);
+  min-height:clamp(560px, calc(100svh - 112px), 900px);
+  display:flex; align-items:center;
+  background:
+    radial-gradient(120% 90% at 78% 8%, #ffffff 0%, rgba(255,255,255,0) 55%),
+    radial-gradient(90% 70% at 12% 100%, var(--blush) 0%, rgba(233,218,211,0) 60%),
+    linear-gradient(168deg, var(--paper) 0%, var(--ivory) 45%, var(--parchment) 100%);
+}
+.hero::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:var(--grain); opacity:.16; mix-blend-mode:multiply;
+}
+.hero__veil{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+
+.hero__in{
+  position:relative; z-index:2;
+  display:grid; gap:clamp(2.5rem,6vw,4rem);
+  padding-block:clamp(4rem,10vw,6rem);
+  width:100%;
+}
+@media (min-width:1000px){
+  .hero__in{ grid-template-columns:minmax(0,1fr) 250px; align-items:end; }
+}
+
+.hero__copy{ display:flex; flex-direction:column; gap:1.6rem; max-width:62ch; }
+.hero h1{ font-size:var(--step-4); max-width:12ch; }
+.hero .lede{ max-width:48ch; font-size:var(--step-1); line-height:1.6; }
+.hero__actions{ display:flex; flex-wrap:wrap; gap:.85rem; }
+
+/* Ölçü rayı — atölye şeridi */
+.rail{ display:flex; flex-direction:column; gap:1.4rem; }
+.rail__tape{ display:none; }
+@media (min-width:1000px){
+  .rail__tape{ display:block; color:var(--line); }
+}
+.rail__item{ display:flex; flex-direction:column; gap:.2rem; padding-left:1rem; border-left:1px solid var(--line); }
+.rail__num{ font-family:var(--serif); font-size:1.6rem; line-height:1.1; font-variant-numeric:tabular-nums; }
+.rail__lbl{ font-size:.72rem; text-transform:uppercase; letter-spacing:.18em; color:var(--muted); }
+@media (max-width:999px){
+  .rail{ flex-direction:row; flex-wrap:wrap; gap:1.5rem 2rem; }
+}
+
+.scrollcue{
+  position:absolute; left:50%; bottom:1.6rem; transform:translateX(-50%);
+  display:none; flex-direction:column; align-items:center; gap:.55rem;
+  font-size:.66rem; text-transform:uppercase; letter-spacing:.24em; color:var(--muted);
+}
+@media (min-width:1000px){ .scrollcue{ display:flex; } }
+.scrollcue i{ display:block; width:1px; height:34px; background:linear-gradient(var(--line),transparent); }
+
+/* ============================================================
+   3 · KOLEKSİYON
+   ============================================================ */
+.grid-collection{
+  display:grid; gap:clamp(1.6rem,3.4vw,2.6rem);
+  grid-template-columns:1fr;
+}
+@media (min-width:620px){ .grid-collection{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:980px){ .grid-collection{ grid-template-columns:repeat(3,1fr); } }
+
+.card{
+  display:flex; flex-direction:column; gap:.65rem;
+  text-decoration:none; color:inherit; cursor:pointer;
+  background:none; border:0; padding:0; text-align:left;
+}
+.card__name{ transition:color var(--fast) var(--ease); }
+.card:hover .card__name, .card:focus-visible .card__name{ color:var(--bronze); }
+.plate{
+  position:relative; overflow:hidden;
+  margin-bottom:.55rem;
+  aspect-ratio:3/4;
+  background:linear-gradient(160deg,var(--paper) 0%, var(--parchment) 100%);
+  border:1px solid var(--line);
+  display:grid; place-items:center;
+}
+.plate::before{
+  content:""; position:absolute; inset:0;
+  background-image:var(--grain); opacity:.14; mix-blend-mode:multiply;
+}
+.plate__glow{
+  position:absolute; inset:0;
+  background:radial-gradient(60% 45% at 50% 12%, #fff 0%, rgba(255,255,255,0) 70%);
+}
+.plate__fig{
+  position:relative; z-index:2; width:74%; height:auto;
+  color:var(--bronze);
+  transition:transform var(--slow) var(--ease);
+}
+.card:hover .plate__fig, .card:focus-visible .plate__fig{ transform:scale(1.045) translateY(-4px); }
+
+/* köşe hizalama işaretleri (kalıp kâğıdı) */
+.plate__mark{ position:absolute; width:13px; height:13px; z-index:3; color:var(--champagne); opacity:.65; }
+.plate__mark--tl{ top:10px; left:10px; }
+.plate__mark--tr{ top:10px; right:10px; transform:rotate(90deg); }
+.plate__mark--bl{ bottom:10px; left:10px; transform:rotate(-90deg); }
+.plate__mark--br{ bottom:10px; right:10px; transform:rotate(180deg); }
+
+.plate__veil{
+  position:absolute; inset:auto 0 0 0; z-index:4;
+  display:flex; align-items:center; justify-content:space-between; gap:.6rem;
+  padding:.85rem 1rem;
+  background:linear-gradient(to top, rgba(42,38,34,.86), rgba(42,38,34,0));
+  color:#f6f1e9;
+  font-size:.7rem; text-transform:uppercase; letter-spacing:.18em;
+  opacity:0; transform:translateY(8px);
+  transition:opacity var(--normal) var(--ease), transform var(--normal) var(--ease);
+}
+.card:hover .plate__veil, .card:focus-visible .plate__veil{ opacity:1; transform:translateY(0); }
+
+.card__meta{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; }
+.card__cat{ font-size:.68rem; text-transform:uppercase; letter-spacing:.2em; color:var(--bronze); }
+.card__no{ font-size:.68rem; color:var(--muted); font-variant-numeric:tabular-nums; letter-spacing:.14em; }
+.card__name{ font-family:var(--serif); font-size:var(--step-2); line-height:1.1; margin:0; }
+.card__desc{ color:var(--muted); font-size:.92rem; margin:0; }
+.card__fabric{
+  /* satır içindeki kartlarda kumaş satırı aynı hizada bitsin */
+  margin:auto 0 0; padding-top:.75rem; border-top:1px dashed var(--line);
+  font-size:.74rem; letter-spacing:.06em; color:var(--ink-soft);
+}
+
+/* ============================================================
+   4 · ATÖLYE HİKÂYESİ
+   ============================================================ */
+.atelier{ background:var(--parchment); }
+.atelier__grid{ display:grid; gap:clamp(2.5rem,6vw,4.5rem); align-items:center; }
+@media (min-width:900px){ .atelier__grid{ grid-template-columns:1fr 1fr; } }
+
+.atelier__copy{ display:flex; flex-direction:column; gap:1.3rem; }
+.atelier__copy .display{ font-size:var(--step-3); }
+.atelier__copy p{ margin:0; color:var(--muted); max-width:52ch; }
+.atelier__facts{ list-style:none; margin:.6rem 0 0; padding:0; display:flex; flex-direction:column; gap:.85rem; }
+.atelier__facts li{ display:flex; gap:.8rem; align-items:flex-start; font-size:.94rem; color:var(--ink-soft); }
+.atelier__facts svg{ flex:none; margin-top:.3rem; color:var(--bronze); }
+
+.frame{
+  position:relative; aspect-ratio:4/5;
+  background:linear-gradient(150deg,#fffdf9 0%, var(--ivory) 46%, #ece2d3 100%);
+  border:1px solid var(--line);
+  display:grid; place-items:center; overflow:hidden;
+}
+.frame::before{ content:""; position:absolute; inset:0; background-image:var(--grain); opacity:.15; mix-blend-mode:multiply; }
+.frame__cap{
+  position:absolute; left:0; bottom:0; z-index:3;
+  padding:.7rem 1rem; background:var(--ivory); border-top:1px solid var(--line); border-right:1px solid var(--line);
+  font-size:.66rem; text-transform:uppercase; letter-spacing:.2em; color:var(--muted);
+}
+
+/* ============================================================
+   5 · SÜREÇ
+   ============================================================ */
+.steps{ display:grid; gap:0; counter-reset:step; }
+@media (min-width:860px){ .steps{ grid-template-columns:repeat(4,1fr); } }
+
+.step{
+  position:relative; display:flex; flex-direction:column; gap:.9rem;
+  padding:2rem 0 2rem 2.2rem;
+  border-left:1px dashed var(--line);
+}
+@media (min-width:860px){
+  .step{ padding:2.6rem 1.6rem 0 0; border-left:0; border-top:1px dashed var(--line); }
+}
+.step__dot{
+  position:absolute; left:-5px; top:2.1rem;
+  width:9px; height:9px; background:var(--ivory);
+  border:1px solid var(--bronze); border-radius:50%;
+}
+@media (min-width:860px){ .step__dot{ left:0; top:-5px; } }
+
+.step__no{
+  font-size:.7rem; letter-spacing:.2em; color:var(--champagne);
+  font-variant-numeric:tabular-nums;
+}
+.step__icon{ color:var(--bronze); }
+.step h3{ font-family:var(--serif); font-weight:400; font-size:var(--step-1); margin:0; }
+.step p{ margin:0; color:var(--muted); font-size:.92rem; max-width:34ch; }
+.step__time{
+  margin-top:auto; padding-top:.6rem;
+  font-size:.72rem; text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft);
+}
+
+/* ============================================================
+   6 · YORUMLAR
+   ============================================================ */
+.voices{ background:var(--ink); color:#f2ece2; }
+.voices .display{ color:#fbf7f0; }
+.voices .eyebrow{ color:var(--champagne); }
+.voices .lede{ color:#b8b0a4; }
+.quotes{ display:grid; gap:clamp(1.4rem,3vw,2.2rem); grid-template-columns:1fr; }
+@media (min-width:860px){ .quotes{ grid-template-columns:repeat(3,1fr); } }
+.quote{
+  display:flex; flex-direction:column; gap:1.1rem;
+  margin:0; /* blockquote UA margin'i (1em 40px) sıfırlanır */
+  padding:2rem 1.75rem;
+  border:1px solid rgba(195,162,104,.32);
+  background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+}
+.quote__mark{ font-family:var(--serif); font-size:2.6rem; line-height:.6; color:var(--champagne); }
+.quote p{ margin:0; font-family:var(--serif); font-size:1.08rem; line-height:1.65; color:#f4efe6; }
+.quote footer{ display:flex; flex-direction:column; gap:.15rem; margin-top:auto; }
+.quote cite{ font-style:normal; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--champagne); }
+.quote small{ font-size:.76rem; color:#a89f92; }
+
+/* ============================================================
+   7 · RANDEVU
+   ============================================================ */
+.booking__grid{ display:grid; gap:clamp(2.5rem,5vw,4rem); }
+@media (min-width:920px){ .booking__grid{ grid-template-columns:1.15fr .85fr; } }
+
+.form{ display:flex; flex-direction:column; gap:1.15rem; }
+.field{ display:flex; flex-direction:column; gap:.45rem; }
+.field label{ font-size:.72rem; text-transform:uppercase; letter-spacing:.16em; color:var(--ink-soft); }
+.field input, .field textarea{
+  font-family:var(--sans); font-size:1rem; color:var(--ink);
+  min-height:50px; padding:.8rem .95rem;
+  background:var(--paper); border:1px solid var(--line); border-radius:0;
+  transition:border-color var(--fast) var(--ease);
+  width:100%;
+}
+.field textarea{ min-height:120px; resize:vertical; line-height:1.6; }
+.field input:hover, .field textarea:hover{ border-color:#cdbfa9; }
+.field input:focus, .field textarea:focus{ outline:none; border-color:var(--bronze); box-shadow:0 0 0 3px rgba(195,162,104,.18); }
+.form__row{ display:grid; gap:1.15rem; }
+@media (min-width:560px){ .form__row{ grid-template-columns:1fr 1fr; } }
+.form__note{ font-size:.78rem; color:var(--muted); margin:0; }
+@media (min-width:560px){ .form > .btn{ align-self:flex-start; padding-inline:2.6rem; } }
+
+.success{
+  display:none; flex-direction:column; gap:.7rem; align-items:flex-start;
+  padding:2rem 1.75rem; background:var(--paper); border:1px solid var(--champagne);
+}
+.success[data-shown="true"]{ display:flex; }
+.form[data-hidden="true"]{ display:none; }
+.success h3{ font-family:var(--serif); font-weight:400; font-size:var(--step-2); margin:0; }
+.success p{ margin:0; color:var(--muted); }
+
+.visit{ display:flex; flex-direction:column; gap:1.6rem; align-self:start; padding:2rem 1.75rem; background:var(--parchment); border:1px solid var(--line); }
+.visit h3{ font-family:var(--serif); font-weight:400; font-size:var(--step-1); margin:0; }
+.hours{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5rem; font-size:.9rem; }
+.hours li{ display:flex; justify-content:space-between; gap:1rem; padding-bottom:.5rem; border-bottom:1px dashed var(--line); }
+.hours span:last-child{ color:var(--muted); font-variant-numeric:tabular-nums; }
+.visit address{ font-style:normal; color:var(--muted); font-size:.92rem; line-height:1.7; }
+.visit a{ color:var(--bronze); text-decoration:none; font-weight:600; }
+.visit a:hover{ text-decoration:underline; }
+
+/* ============================================================
+   8 · FOOTER
+   ============================================================ */
+.footer{ background:var(--ivory); border-top:1px solid var(--line); padding-block:clamp(3rem,7vw,4.5rem) 2rem; }
+.footer__grid{ display:grid; gap:2.4rem; }
+@media (min-width:760px){ .footer__grid{ grid-template-columns:1.4fr 1fr 1fr; } }
+.footer h4{ font-size:.7rem; text-transform:uppercase; letter-spacing:.2em; color:var(--muted); margin:0 0 1rem; font-weight:600; }
+.footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.7rem; }
+.footer a{ text-decoration:none; color:var(--ink-soft); font-size:.9rem; }
+.footer a:hover{ color:var(--bronze); }
+.footer__brand p{ color:var(--muted); font-size:.9rem; max-width:36ch; margin:1rem 0 0; }
+.social{ display:flex; gap:.7rem; margin-top:1.2rem; }
+.social a{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:44px; height:44px; border:1px solid var(--line); color:var(--ink-soft);
+  transition:border-color var(--fast) var(--ease), color var(--fast) var(--ease), transform var(--fast) var(--ease);
+}
+.social a:hover{ border-color:var(--bronze); color:var(--bronze); transform:translateY(-2px); }
+.colophon{
+  margin-top:2.6rem; padding-top:1.4rem; border-top:1px solid var(--line);
+  display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; justify-content:space-between;
+  font-size:.76rem; color:var(--muted);
+}
+.preview-note{
+  margin:1.2rem 0 0; padding:.8rem 1rem;
+  border:1px dashed var(--line); background:var(--parchment);
+  font-size:.74rem; letter-spacing:.02em; color:var(--muted); text-align:center;
+}
+
+/* ============================================================
+   9 · YÜZEN WHATSAPP
+   ============================================================ */
+.wa{
+  position:fixed; right:clamp(1rem,3vw,1.6rem); bottom:clamp(1rem,3vw,1.6rem); z-index:80;
+  display:inline-flex; align-items:center; gap:.6rem;
+  min-height:52px; padding:0 1.1rem 0 .95rem;
+  background:var(--whatsapp); color:#fff; text-decoration:none;
+  border-radius:999px; box-shadow:0 8px 24px rgba(31,157,89,.28);
+  font-size:.8rem; font-weight:600; letter-spacing:.06em;
+  transition:transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+}
+.wa:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(31,157,89,.34); }
+.wa span{ display:none; }
+@media (min-width:560px){ .wa span{ display:inline; } }
+
+/* ============================================================
+   Görünürlük animasyonu
+   ============================================================ */
+.reveal{ opacity:0; transform:translateY(22px); }
+.reveal[data-seen="true"]{
+  opacity:1; transform:none;
+  transition:opacity var(--slow) var(--ease), transform var(--slow) var(--ease);
+  transition-delay:var(--d,0ms);
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; }
+  .reveal[data-seen="true"]{ transition:none; }
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+</style>
+
+<noscript>
+  <style>.reveal{ opacity:1 !important; transform:none !important; }</style>
+</noscript>
+
+<!-- ============ SVG SİLÜET KÜTÜPHANESİ (gerçek çekimlerle değişecek) ============ -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <symbol id="dress-aline" viewBox="0 0 240 340">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M96 74c10 16 38 16 48 0l4 18c2 26 1 46-1 60H93c-2-14-3-34-1-60z"/>
+        <path d="M93 152h54c13 48 25 108 31 148-28 10-88 10-116 0 6-40 18-100 31-148z"/>
+        <path d="M120 84v212" stroke-dasharray="3 6" opacity=".55"/>
+        <path d="M106 154c-3 52-7 100-12 142M134 154c3 52 7 100 12 142" opacity=".4"/>
+        <path d="M102 100c12 6 24 6 36 0" opacity=".45"/>
+      </g>
+    </symbol>
+
+    <symbol id="dress-prenses" viewBox="0 0 240 340">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M96 72c10 16 38 16 48 0l4 20c2 28 1 44-2 56l-6 8h-40l-6-8c-3-12-4-28-2-56z"/>
+        <path d="M94 152h52c30 40 54 100 62 152-38 14-138 14-176 0 8-52 32-112 62-152z"/>
+        <path d="M120 88v206" stroke-dasharray="3 6" opacity=".5"/>
+        <path d="M104 156c-8 50-20 102-32 142M136 156c8 50 20 102 32 142M92 158c-14 44-30 96-40 138M148 158c14 44 30 96 40 138" opacity=".33"/>
+        <path d="M100 96c14 7 26 7 40 0" opacity=".45"/>
+      </g>
+    </symbol>
+
+    <symbol id="dress-balik" viewBox="0 0 240 340">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M97 70c9 14 37 14 46 0l5 20c2 24 1 46-1 62H93c-2-16-3-38-1-62z"/>
+        <path d="M93 152h54c5 26 5 48 1 70-2 24 4 56 20 84-28 8-68 8-96 0 16-28 22-60 20-84-4-22-4-44 1-70z"/>
+        <path d="M120 84v208" stroke-dasharray="3 6" opacity=".5"/>
+        <path d="M96 222h48" opacity=".45"/>
+        <path d="M104 226c1 26-4 54-16 78M136 226c-1 26 4 54 16 78" opacity=".35"/>
+        <path d="M102 96c12 6 24 6 36 0" opacity=".45"/>
+      </g>
+    </symbol>
+
+    <symbol id="dress-helen" viewBox="0 0 240 340">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M98 72c8 12 34 12 44 0l5 18c1 10 1 20 0 30H93c-1-10-1-20 0-30z"/>
+        <path d="M142 72c7-9 11-18 9-27" opacity=".8"/>
+        <path d="M93 120h54c7 62 15 132 19 182-26 8-66 8-92 0 4-50 12-120 19-182z"/>
+        <path d="M96 140c14 16 34 22 48 10M97 176c16 18 36 22 46 8M99 214c16 18 34 22 42 8" opacity=".33"/>
+        <path d="M93 120h54" opacity=".55"/>
+      </g>
+    </symbol>
+
+    <symbol id="dress-yalin" viewBox="0 0 240 340">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M97 78h46l2 72H95z"/>
+        <path d="M99 78c2-11 4-19 3-27M141 78c-2-11-4-19-3-27" opacity=".85"/>
+        <path d="M95 150h50c6 58 10 108 12 152-24 6-50 6-74 0 2-44 6-94 12-152z"/>
+        <path d="M120 86v202" stroke-dasharray="3 6" opacity=".45"/>
+        <path d="M97 78c14 8 32 8 46 0" opacity=".4"/>
+      </g>
+    </symbol>
+
+    <symbol id="dress-nikah" viewBox="0 0 240 340">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M97 72c9 14 37 14 46 0l5 18c2 22 1 46-1 62H93c-2-16-3-40-1-62z"/>
+        <path d="M92 82c-9 4-14 14-13 26M148 82c9 4 14 14 13 26" opacity=".75"/>
+        <path d="M93 152h54c11 30 21 62 25 88-26 10-78 10-104 0 4-26 14-58 25-88z"/>
+        <path d="M91 146h58" opacity=".7"/>
+        <path d="M107 154c-4 32-9 60-14 82M133 154c4 32 9 60 14 82" opacity=".35"/>
+      </g>
+    </symbol>
+
+    <symbol id="mark-corner" viewBox="0 0 14 14">
+      <path d="M0 .5h14M.5 0v14" fill="none" stroke="currentColor" stroke-width="1"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============================== ÜST BAR ============================== -->
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span>Randevu ile çalışılır</span>
+    <span>Prova takvimi düğün tarihinize göre planlanır</span>
+    <span>Nişantaşı · İstanbul</span>
+  </div>
+</div>
+
+<!-- ============================== NAV ============================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top">
+      <span class="brand__name" data-brand-name>Atölye Vera</span>
+      <span class="brand__sub" data-brand-sub>Bridal Couture</span>
+    </a>
+
+    <nav aria-label="Ana menü">
+      <ul class="nav__links">
+        <li><a href="#koleksiyon">Koleksiyon</a></li>
+        <li><a href="#atolye">Atölye</a></li>
+        <li><a href="#surec">Süreç</a></li>
+        <li><a href="#yorumlar">Yorumlar</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn nav__cta" href="#iletisim">Randevu Al</a>
+
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Menüyü aç</span>
+    </button>
+  </div>
+
+  <div class="drawer" id="drawer" data-open="false">
+    <div class="drawer__in">
+      <ul>
+        <li><a href="#koleksiyon">Koleksiyon</a></li>
+        <li><a href="#atolye">Atölye</a></li>
+        <li><a href="#surec">Süreç</a></li>
+        <li><a href="#yorumlar">Yorumlar</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+      <a class="btn" href="#iletisim">Randevu Al</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================== HERO ============================== -->
+<main id="top">
+<section class="hero">
+  <svg class="hero__veil" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="tulle" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#c3a268" stop-opacity=".26"/>
+        <stop offset="1" stop-color="#c3a268" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="shaft" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/>
+        <stop offset=".55" stop-color="#ffffff" stop-opacity=".4"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="soften" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="46"/>
+      </filter>
+    </defs>
+    <!-- pencereden düşen ışık hüzmeleri (yumuşatılmış) -->
+    <g opacity=".85" filter="url(#soften)">
+      <polygon points="880,-80 1180,-80 1010,940 850,940" fill="url(#shaft)"/>
+      <polygon points="1190,-80 1340,-80 1270,940 1120,940" fill="url(#shaft)" opacity=".55"/>
+    </g>
+    <!-- tül kıvrımları -->
+    <g fill="none" stroke="url(#tulle)" stroke-width="1">
+      <path d="M1440 60C1210 190 1180 400 1290 620s90 220 40 320"/>
+      <path d="M1440 130C1160 250 1120 470 1230 690s70 150 20 250"/>
+      <path d="M1440 210C1120 320 1060 520 1170 730s60 110 10 210"/>
+      <path d="M1440 300C1090 400 1010 570 1120 770s40 80 -10 180"/>
+    </g>
+    <g fill="none" stroke="#c3a268" stroke-opacity=".14" stroke-width="1">
+      <path d="M-40 700C160 640 320 700 470 900"/>
+      <path d="M-40 790C180 730 350 790 500 900"/>
+    </g>
+  </svg>
+
+  <div class="wrap hero__in">
+    <div class="hero__copy">
+      <p class="eyebrow reveal">Özel dikim gelinlik atölyesi</p>
+      <h1 class="display reveal" style="--d:80ms">Hayalindeki gelinlik, <em>senin ölçünle</em> dikilir.</h1>
+      <p class="lede reveal" style="--d:160ms">Hazır bedenden değil, beyaz bir kâğıttan başlıyoruz. Her gelinlik tek bir kişi için çiziliyor, kesiliyor ve atölyemizde elde dikiliyor.</p>
+      <div class="hero__actions reveal" style="--d:240ms">
+        <a class="btn" href="#iletisim">Randevu Al</a>
+        <a class="btn btn--ghost" href="#koleksiyon">Koleksiyonu Gör</a>
+      </div>
+    </div>
+
+    <aside class="rail reveal" style="--d:320ms" aria-label="Atölye özeti">
+      <svg class="rail__tape" viewBox="0 0 220 26" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M0 25h220"/>
+          <path d="M10 25v-14M30 25v-7M50 25v-7M70 25v-7M90 25v-14M110 25v-7M130 25v-7M150 25v-7M170 25v-14M190 25v-7M210 25v-7"/>
+        </g>
+      </svg>
+      <div class="rail__item">
+        <span class="rail__num">18</span>
+        <span class="rail__lbl">yıllık atölye</span>
+      </div>
+      <div class="rail__item">
+        <span class="rail__num">3</span>
+        <span class="rail__lbl">prova standart</span>
+      </div>
+      <div class="rail__item">
+        <span class="rail__num">100%</span>
+        <span class="rail__lbl">kişiye özel dikim</span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="scrollcue" aria-hidden="true"><span>Aşağı</span><i></i></div>
+</section>
+
+<!-- ============================== KOLEKSİYON ============================== -->
+<section class="section" id="koleksiyon">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow reveal">Koleksiyon</p>
+      <h2 class="display reveal" style="--d:60ms">Altı kalıp, sınırsız yorum.</h2>
+      <p class="lede reveal" style="--d:120ms">Aşağıdaki modeller birer başlangıç noktası. Yaka, sırt, kuyruk boyu ve kumaş — hepsi provada sizinle birlikte yeniden kurgulanır.</p>
+    </header>
+
+    <div class="grid-collection">
+
+      <a href="#iletisim" class="card reveal">
+        <div class="plate">
+          <div class="plate__glow"></div>
+          <svg class="plate__mark plate__mark--tl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--tr" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--bl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--br" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__fig" viewBox="0 0 240 340" role="img" aria-label="A-kesim gelinlik silüeti"><use href="#dress-aline"/></svg>
+          <div class="plate__veil"><span>Aliz</span><span>Randevu al</span></div>
+        </div>
+        <div class="card__meta"><span class="card__cat">A-Kesim</span><span class="card__no">01</span></div>
+        <h3 class="card__name">Aliz</h3>
+        <p class="card__desc">Belden yumuşacık açılan, her boya yakışan kesim. Atölyede en çok istenen kalıp; sadeliği kumaşın kendisi taşır.</p>
+        <p class="card__fabric">İpek mikado · el işi güpür yaka · 90 cm kuyruk</p>
+      </a>
+
+      <a href="#iletisim" class="card reveal" style="--d:70ms">
+        <div class="plate">
+          <div class="plate__glow"></div>
+          <svg class="plate__mark plate__mark--tl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--tr" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--bl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--br" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__fig" viewBox="0 0 240 340" role="img" aria-label="Prenses kesim gelinlik silüeti"><use href="#dress-prenses"/></svg>
+          <div class="plate__veil"><span>Roza</span><span>Randevu al</span></div>
+        </div>
+        <div class="card__meta"><span class="card__cat">Prenses</span><span class="card__no">02</span></div>
+        <h3 class="card__name">Roza</h3>
+        <p class="card__desc">Katmanlı tül eteğiyle salon düğünlerinin klasiği. Korse iç yapı elde balenlenir, gün boyu formunu korur.</p>
+        <p class="card__fabric">7 kat tül · korse iç yapı · çıkarılabilir kuyruk</p>
+      </a>
+
+      <a href="#iletisim" class="card reveal" style="--d:140ms">
+        <div class="plate">
+          <div class="plate__glow"></div>
+          <svg class="plate__mark plate__mark--tl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--tr" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--bl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--br" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__fig" viewBox="0 0 240 340" role="img" aria-label="Balık kesim gelinlik silüeti"><use href="#dress-balik"/></svg>
+          <div class="plate__veil"><span>Deniz</span><span>Randevu al</span></div>
+        </div>
+        <div class="card__meta"><span class="card__cat">Balık / Mermaid</span><span class="card__no">03</span></div>
+        <h3 class="card__name">Deniz</h3>
+        <p class="card__desc">Bedeni saran, dizden aşağısı açılan iddialı hat. Kalıp doğrudan sizin ölçünüzle çıkarıldığı için oturuşu şaşmaz.</p>
+        <p class="card__fabric">Krep saten · sırt dantel aplike · balık kuyruk</p>
+      </a>
+
+      <a href="#iletisim" class="card reveal" style="--d:70ms">
+        <div class="plate">
+          <div class="plate__glow"></div>
+          <svg class="plate__mark plate__mark--tl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--tr" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--bl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--br" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__fig" viewBox="0 0 240 340" role="img" aria-label="Helen kesim gelinlik silüeti"><use href="#dress-helen"/></svg>
+          <div class="plate__veil"><span>Thalia</span><span>Randevu al</span></div>
+        </div>
+        <div class="card__meta"><span class="card__cat">Helen</span><span class="card__no">04</span></div>
+        <h3 class="card__name">Thalia</h3>
+        <p class="card__desc">Göğüs altından dökülen drapeli hat. Kır ve sahil düğünleri için hafif, rüzgârla birlikte çalışan bir siluet.</p>
+        <p class="card__fabric">Şifon drape · tek omuz · astarsız hafif etek</p>
+      </a>
+
+      <a href="#iletisim" class="card reveal" style="--d:140ms">
+        <div class="plate">
+          <div class="plate__glow"></div>
+          <svg class="plate__mark plate__mark--tl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--tr" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--bl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--br" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__fig" viewBox="0 0 240 340" role="img" aria-label="Sade minimal gelinlik silüeti"><use href="#dress-yalin"/></svg>
+          <div class="plate__veil"><span>Yalın</span><span>Randevu al</span></div>
+        </div>
+        <div class="card__meta"><span class="card__cat">Sade / Minimal</span><span class="card__no">05</span></div>
+        <h3 class="card__name">Yalın</h3>
+        <p class="card__desc">Süsün değil dikişin konuştuğu model. Tek bir yanlış dikiş affetmez; bu yüzden en çok emek isteyen kalıbımız.</p>
+        <p class="card__fabric">Ağır saten · ince askı · gizli yan dikiş</p>
+      </a>
+
+      <a href="#iletisim" class="card reveal" style="--d:210ms">
+        <div class="plate">
+          <div class="plate__glow"></div>
+          <svg class="plate__mark plate__mark--tl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--tr" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--bl" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__mark plate__mark--br" aria-hidden="true"><use href="#mark-corner"/></svg>
+          <svg class="plate__fig" viewBox="0 0 240 340" role="img" aria-label="Nikah elbisesi silüeti"><use href="#dress-nikah"/></svg>
+          <div class="plate__veil"><span>Nisan</span><span>Randevu al</span></div>
+        </div>
+        <div class="card__meta"><span class="card__cat">Nikah</span><span class="card__no">06</span></div>
+        <h3 class="card__name">Nisan</h3>
+        <p class="card__desc">Nikâh ve söz için midi boy. Düğünden sonra da giyilebilsin diye tasarlandı; isterseniz renkli kumaşla çalışıyoruz.</p>
+        <p class="card__fabric">Mikado midi · balon kol · sırt düğme sırası</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<hr class="seam"/>
+
+<!-- ============================== ATÖLYE ============================== -->
+<section class="section atelier" id="atolye">
+  <div class="wrap atelier__grid">
+    <div class="atelier__copy">
+      <p class="eyebrow reveal">Atölye</p>
+      <h2 class="display reveal" style="--d:60ms">Bir gelinlik, iki elin ve yüz saatin işidir.</h2>
+      <p class="reveal" style="--d:120ms">Atölyemizde aynı anda yalnızca sınırlı sayıda gelinlik dikiliyor. Kalıbınız ilk randevuda alınan ölçülerle sıfırdan çiziliyor; hiçbir hazır beden üzerine oynanmıyor.</p>
+      <p class="reveal" style="--d:160ms">Güpür aplikeler, boncuk işlemeler ve kuyruk uçlarındaki el sürfilesi tamamen elde yapılıyor. Bu yüzden söz verdiğimiz süre kısa değil — ama teslim ettiğimiz gelinlik gerçekten size ait.</p>
+
+      <ul class="atelier__facts reveal" style="--d:200ms">
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8.5 6 12l8-8.5"/></svg>
+          <span>Kalıp, dikiş ve işleme aynı çatı altında — üretim dışarı verilmez.</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8.5 6 12l8-8.5"/></svg>
+          <span>Kumaşlar İtalya ve Fransa'dan; her top atölyede tek tek seçilir.</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8.5 6 12l8-8.5"/></svg>
+          <span>Düğün tarihinden 12–16 hafta önce başlamanızı öneriyoruz.</span>
+        </li>
+        <li>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8.5 6 12l8-8.5"/></svg>
+          <span>Son prova sonrası ücretsiz rötuş hakkı standarttır.</span>
+        </li>
+      </ul>
+    </div>
+
+    <figure class="frame reveal" style="--d:120ms; margin:0">
+      <svg viewBox="0 0 300 380" width="72%" aria-label="Atölyede askıdaki gelinlik ve manken çizimi" role="img">
+        <g fill="none" stroke="#8a6b3a" stroke-width="1.3" stroke-linejoin="round">
+          <!-- askı -->
+          <path d="M150 34c-7 0-11 5-11 10 0 4 3 7 7 8" opacity=".8"/>
+          <path d="M150 52 96 78h108z"/>
+          <!-- gelinlik -->
+          <path d="M118 80h64c8 30 6 52 4 66h-72c-2-14-4-36 4-66z"/>
+          <path d="M114 146h72c16 60 32 132 38 184-42 16-106 16-148 0 6-52 22-124 38-184z"/>
+          <path d="M150 84v238" stroke-dasharray="3 6" opacity=".5"/>
+          <path d="M128 150c-8 56-18 116-24 168M172 150c8 56 18 116 24 168" opacity=".35"/>
+          <!-- ölçü şeridi -->
+          <g opacity=".7">
+            <path d="M244 96c14 40 8 92-10 132-16 36-14 78 6 106"/>
+            <circle cx="244" cy="94" r="3"/>
+          </g>
+          <!-- iğne yastığı -->
+          <g opacity=".55" transform="translate(-14,-166)">
+            <path d="M52 300c0-12 10-20 22-20s22 8 22 20-10 18-22 18-22-6-22-18z"/>
+            <path d="M62 292l10 6M84 290l-8 8M74 284v10"/>
+          </g>
+        </g>
+        <g fill="none" stroke="#c3a268" stroke-width="1" stroke-dasharray="4 6" opacity=".5">
+          <path d="M28 44h244M28 44v292M272 44v292M28 336h244"/>
+        </g>
+      </svg>
+      <figcaption class="frame__cap">Atölye · kalıp masası</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================== SÜREÇ ============================== -->
+<section class="section" id="surec">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow reveal">Nasıl çalışıyoruz</p>
+      <h2 class="display reveal" style="--d:60ms">İlk randevudan teslime dört durak.</h2>
+      <p class="lede reveal" style="--d:120ms">Süreç sırayla ilerler; her adımın sonunda ne olacağını önceden bilirsiniz. Sürpriz ücret ya da belirsiz teslim tarihi yok.</p>
+    </header>
+
+    <div class="steps">
+      <article class="step reveal">
+        <span class="step__dot"></span>
+        <span class="step__no">Adım 01</span>
+        <svg class="step__icon" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+          <rect x="3" y="5" width="20" height="18"/><path d="M3 10h20M8.5 2.5v5M17.5 2.5v5"/><circle cx="13" cy="16" r="2.2"/>
+        </svg>
+        <h3>Randevu</h3>
+        <p>Atölyede birebir tanışma. Düğün konseptinizi, bütçenizi ve takvimi konuşur, ölçülerinizi alırız.</p>
+        <span class="step__time">60 dakika · ücretsiz</span>
+      </article>
+
+      <article class="step reveal" style="--d:80ms">
+        <span class="step__dot"></span>
+        <span class="step__no">Adım 02</span>
+        <svg class="step__icon" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+          <path d="M3 6.5c4-2.5 8-2.5 12 0s8 2.5 8 0"/><path d="M3 6.5v13c4-2.5 8-2.5 12 0s8 2.5 8 0v-13"/><path d="M3 13c4-2.5 8-2.5 12 0s8 2.5 8 0"/>
+        </svg>
+        <h3>Tasarım &amp; Kumaş Seçimi</h3>
+        <p>Silüet çizimi, kumaş ve dantel seçimi. Onayladığınız çizim üzerinden kalıbınız sıfırdan çıkarılır.</p>
+        <span class="step__time">yaklaşık 2 hafta</span>
+      </article>
+
+      <article class="step reveal" style="--d:160ms">
+        <span class="step__dot"></span>
+        <span class="step__no">Adım 03</span>
+        <svg class="step__icon" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+          <path d="M13 2.5c1.8 3 1.2 4.5 0 6"/><path d="M9 8.5h8c2.5 7 4.5 12 5 15-5 2.5-13 2.5-18 0 .5-3 2.5-8 5-15z"/><path d="M13 8.5v14" stroke-dasharray="2.5 4"/>
+        </svg>
+        <h3>Provalar</h3>
+        <p>Üç prova standart: kalıp provası, dikiş provası ve son oturum. Her provada gerekli her düzeltme yapılır.</p>
+        <span class="step__time">3 prova · 6–8 hafta</span>
+      </article>
+
+      <article class="step reveal" style="--d:240ms">
+        <span class="step__dot"></span>
+        <span class="step__no">Adım 04</span>
+        <svg class="step__icon" width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+          <rect x="3" y="9" width="20" height="14"/><path d="M3 9h20M13 9v14"/><path d="M13 9c-3.5 0-6-1.4-6-3.2S9 3 10.4 4.2 13 9 13 9zm0 0c3.5 0 6-1.4 6-3.2S17 3 15.6 4.2 13 9 13 9z"/>
+        </svg>
+        <h3>Teslim</h3>
+        <p>Gelinliğiniz ütülenip özel kılıfında teslim edilir. Düğün sabahı giydirme desteği talep edebilirsiniz.</p>
+        <span class="step__time">düğünden 10 gün önce</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== YORUMLAR ============================== -->
+<section class="section voices" id="yorumlar">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow reveal">Gelin yorumları</p>
+      <h2 class="display reveal" style="--d:60ms">Onlar da beyaz bir kâğıtla başladı.</h2>
+    </header>
+
+    <div class="quotes">
+      <blockquote class="quote reveal">
+        <span class="quote__mark" aria-hidden="true">&ldquo;</span>
+        <p>Kafamdaki gelinliği anlatamıyordum, çizince gördüm. İlk provada zaten benim olduğunu anladım; kalanı sadece detaydı.</p>
+        <footer><cite>Elif K.</cite><small>Haziran · Şile, kır düğünü</small></footer>
+      </blockquote>
+
+      <blockquote class="quote reveal" style="--d:90ms">
+        <span class="quote__mark" aria-hidden="true">&ldquo;</span>
+        <p>Üç ay boyunca her aşamada haber verdiler, hiçbir şeyi sormak zorunda kalmadım. Teslim tarihi de aynen söyledikleri gündü.</p>
+        <footer><cite>Merve A.</cite><small>Eylül · İstanbul, salon düğünü</small></footer>
+      </blockquote>
+
+      <blockquote class="quote reveal" style="--d:180ms">
+        <span class="quote__mark" aria-hidden="true">&ldquo;</span>
+        <p>Sırt detayını son provada değiştirmek istedim, tek kelime etmeden söktüler. O yüzden gün boyu rahat ettim, hiç çekiştirmedim.</p>
+        <footer><cite>Zeynep D.</cite><small>Mayıs · Çeşme, sahil düğünü</small></footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== RANDEVU ============================== -->
+<section class="section" id="iletisim">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow reveal">Randevu</p>
+      <h2 class="display reveal" style="--d:60ms">Gelin, bir çay içelim ve konuşalım.</h2>
+      <p class="lede reveal" style="--d:120ms">İlk görüşme ücretsizdir ve hiçbir bağlayıcılığı yoktur. Formu bırakın, en geç ertesi iş günü size dönelim.</p>
+    </header>
+
+    <div class="booking__grid">
+      <div class="reveal">
+        <form class="form" id="randevu-form" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="ad">Ad Soyad</label>
+              <input id="ad" name="ad" type="text" autocomplete="name" placeholder="Adınız ve soyadınız" required/>
+            </div>
+            <div class="field">
+              <label for="tel">Telefon</label>
+              <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="0 5xx xxx xx xx" required/>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="tarih">Tercih ettiğiniz randevu tarihi</label>
+            <input id="tarih" name="tarih" type="date" required/>
+          </div>
+
+          <div class="field">
+            <label for="mesaj">Mesajınız</label>
+            <textarea id="mesaj" name="mesaj" placeholder="Düğün tarihiniz, aklınızdaki model ya da merak ettikleriniz…"></textarea>
+          </div>
+
+          <button class="btn btn--gold" type="submit">Randevu Talebi Gönder</button>
+          <p class="form__note">Bilgileriniz yalnızca randevu için kullanılır, üçüncü kişilerle paylaşılmaz.</p>
+        </form>
+
+        <div class="success" id="basari" role="status" aria-live="polite">
+          <h3>Talebiniz alındı ✨</h3>
+          <p>En kısa sürede dönüş yapacağız. Acele bir durumsa WhatsApp'tan da yazabilirsiniz.</p>
+          <button class="btn btn--ghost" type="button" id="tekrar">Yeni Talep Oluştur</button>
+        </div>
+      </div>
+
+      <aside class="visit reveal" style="--d:100ms">
+        <div>
+          <h3>Atölye ziyareti</h3>
+          <p class="form__note" style="margin-top:.4rem">Ziyaretler yalnızca randevu ile — böylece atölyede sadece siz olursunuz.</p>
+        </div>
+
+        <ul class="hours">
+          <li><span>Pazartesi – Cuma</span><span>10.00 – 19.00</span></li>
+          <li><span>Cumartesi</span><span>11.00 – 18.00</span></li>
+          <li><span>Pazar</span><span>Kapalı</span></li>
+        </ul>
+
+        <div>
+          <h3>Adres</h3>
+          <address>
+            Örnek Mahallesi, Terzi Sokak No: 00/0<br/>
+            Nişantaşı / Şişli, İstanbul<br/>
+            <a href="tel:+900000000000">0 (000) 000 00 00</a>
+          </address>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top">
+          <span class="brand__name" data-brand-name>Atölye Vera</span>
+          <span class="brand__sub" data-brand-sub>Bridal Couture</span>
+        </a>
+        <p>Kişiye özel gelinlik ve nikâh elbisesi atölyesi. Randevu ile çalışılır.</p>
+        <div class="social">
+          <a href="#" aria-label="Instagram hesabımız">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="WhatsApp ile yazın">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M3.5 20.5l1.3-4.3A8.2 8.2 0 1 1 8 19.4l-4.5 1.1z"/>
+              <path d="M9 8.4c.3-.7.6-.7.9-.7h.7c.2 0 .5 0 .7.6l.7 1.7c.1.3 0 .5-.1.7l-.4.5c-.2.2-.3.4-.1.7.4.7 1.5 1.9 2.6 2.4.3.2.5.1.7-.1l.5-.6c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.4.4.6-.1.7-.7 1.5-1.4 1.6-1 .2-2.3 0-4.2-1.2-2-1.3-3.1-3.2-3.4-4.3-.2-1 .1-1.9.2-2.6z" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <nav aria-label="Alt menü">
+        <h4>Menü</h4>
+        <ul>
+          <li><a href="#koleksiyon">Koleksiyon</a></li>
+          <li><a href="#atolye">Atölye</a></li>
+          <li><a href="#surec">Süreç</a></li>
+          <li><a href="#yorumlar">Yorumlar</a></li>
+          <li><a href="#iletisim">Randevu</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h4>İletişim</h4>
+        <ul>
+          <li><a href="tel:+900000000000">0 (000) 000 00 00</a></li>
+          <li><a href="#iletisim">Randevu formu</a></li>
+          <li><a href="#">Örnek Mah. Terzi Sok. No: 00/0<br/>Nişantaşı, İstanbul</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <span>&copy; <span id="yil">2026</span> <span data-brand-name>Atölye Vera</span> — Tüm hakları saklıdır.</span>
+      <span>Kişiye özel gelinlik atölyesi · İstanbul</span>
+    </div>
+
+    <p class="preview-note">Bu bir tasarım önizlemesidir — görseller ve metinler markanıza göre uyarlanacaktır.</p>
+  </div>
+</footer>
+
+<a class="wa" href="#" aria-label="WhatsApp ile yazın">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.86.5 3.6 1.36 5.1L2 22l5.2-1.52a9.8 9.8 0 0 0 4.84 1.26h.01c5.43 0 9.84-4.4 9.84-9.84 0-2.63-1.02-5.1-2.88-6.96A9.78 9.78 0 0 0 12.04 2zm0 1.8c2.15 0 4.17.84 5.69 2.36a7.98 7.98 0 0 1 2.36 5.68c0 4.44-3.61 8.05-8.05 8.05a8.1 8.1 0 0 1-4.1-1.12l-.3-.18-3.05.9.9-2.98-.2-.3a7.98 7.98 0 0 1-1.24-4.3c0-4.44 3.61-8.05 8.05-8.05zM8.6 7.16c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.72 4.15 3.72 1.99.81 2.4.65 2.83.6.44-.04 1.4-.57 1.6-1.13.2-.55.2-1.03.14-1.13-.06-.1-.22-.16-.46-.28-.24-.12-1.4-.7-1.62-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.18-.7-.63-1.18-1.4-1.32-1.64-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.53-1.32-.74-1.8-.18-.44-.37-.44-.53-.45h-.44z"/>
+  </svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------------------------------------------------------
+     MARKA AYARI — İsim tek yerden değişir.
+     Yeni müşteri adı buraya yazılınca sayfadaki tüm geçişler güncellenir.
+     (CSS tarafındaki renk/tipografi tokenları :root içindedir.)
+  ----------------------------------------------------------------*/
+  var MARKA = { ad: "Atölye Vera", altBaslik: "Bridal Couture" };
+
+  document.querySelectorAll("[data-brand-name]").forEach(function(el){ el.textContent = MARKA.ad; });
+  document.querySelectorAll("[data-brand-sub]").forEach(function(el){ el.textContent = MARKA.altBaslik; });
+  if (document.title.indexOf("—") > -1) document.title = MARKA.ad + " — " + MARKA.altBaslik;
+
+  var yil = document.getElementById("yil");
+  if (yil) yil.textContent = new Date().getFullYear();
+
+  var azHareket = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* --- Mobil menü --- */
+  var burger = document.getElementById("burger");
+  var drawer = document.getElementById("drawer");
+  function menuKapat(){
+    drawer.setAttribute("data-open","false");
+    burger.setAttribute("aria-expanded","false");
+  }
+  burger.addEventListener("click", function(){
+    var acik = drawer.getAttribute("data-open") === "true";
+    drawer.setAttribute("data-open", acik ? "false" : "true");
+    burger.setAttribute("aria-expanded", acik ? "false" : "true");
+  });
+  drawer.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", menuKapat); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") menuKapat(); });
+
+  /* --- Sticky nav durumu --- */
+  var nav = document.getElementById("nav");
+  var sentinel = document.createElement("div");
+  sentinel.style.cssText = "position:absolute;top:0;height:1px;width:1px";
+  document.body.prepend(sentinel);
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(function(entries){
+      nav.setAttribute("data-stuck", entries[0].isIntersecting ? "false" : "true");
+    }).observe(sentinel);
+  }
+
+  /* --- Scroll ile fade-up --- */
+  var hedefler = document.querySelectorAll(".reveal");
+  if (azHareket || !("IntersectionObserver" in window)){
+    hedefler.forEach(function(el){ el.setAttribute("data-seen","true"); });
+  } else {
+    var gozlemci = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var t = setTimeout(function(){ el.setAttribute("data-seen","true"); }, 0);
+        el.addEventListener("transitionend", function(){ clearTimeout(t); }, { once:true });
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    hedefler.forEach(function(el){ gozlemci.observe(el); });
+    // Açılışta ekranda olanlar hemen görünsün
+    setTimeout(function(){
+      hedefler.forEach(function(el){
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.9) el.setAttribute("data-seen","true");
+      });
+    }, 40);
+  }
+
+  /* --- Randevu formu (demo: gerçek istek atılmaz) --- */
+  var form = document.getElementById("randevu-form");
+  var basari = document.getElementById("basari");
+  var tekrar = document.getElementById("tekrar");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var eksik = false;
+    ["ad","tel","tarih"].forEach(function(id){
+      var alan = document.getElementById(id);
+      if (!alan.value.trim()){
+        alan.style.borderColor = "#b4483c";
+        eksik = true;
+      } else {
+        alan.style.borderColor = "";
+      }
+    });
+    if (eksik) { document.getElementById("ad").focus(); return; }
+
+    form.setAttribute("data-hidden","true");
+    basari.setAttribute("data-shown","true");
+    basari.scrollIntoView({ behavior: azHareket ? "auto" : "smooth", block: "center" });
+  });
+
+  tekrar.addEventListener("click", function(){
+    form.reset();
+    basari.setAttribute("data-shown","false");
+    form.setAttribute("data-hidden","false");
+    document.getElementById("ad").focus();
+  });
+
+  /* --- Bugünden önceki tarihler seçilemesin --- */
+  var tarih = document.getElementById("tarih");
+  var bugun = new Date();
+  tarih.min = bugun.toISOString().slice(0,10);
+})();
+</script>
