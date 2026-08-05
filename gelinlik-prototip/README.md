@@ -1,4 +1,4 @@
-# Mira Couture — Gelinlik Butiği Web Sitesi Prototipi
+# Saray Bridal — Gelinlik Butiği Web Sitesi Prototipi
 
 Antalya'daki bir gelinlik couture atölyesi için hazırlanmış, **tamamen statik**
 (framework'süz, build adımsız) müşteri sunum prototipi.
@@ -21,7 +21,7 @@ python3 -m http.server 8000
 > Not: Google Fonts, Unsplash görselleri ve Google Maps haritası internetten
 > yüklendiği için siteyi **çevrimiçi** görüntülemek en doğru sonucu verir.
 > İnternet olmadan da sayfa düzeni bozulmaz; yazı tipleri sistem alternatiflerine
-> düşer, görsellerin yerinde ise tasarıma uygun bej degrade + "M" monogramı görünür.
+> düşer, görsellerin yerinde ise tasarıma uygun bej degrade + "S" monogramı görünür.
 
 ---
 
@@ -29,7 +29,7 @@ python3 -m http.server 8000
 
 ```
 gelinlik-prototip/
-├── index.html            Ana sayfa
+├── index.html            Ana sayfa (atölye hikâyesi bölümü dâhil)
 ├── koleksiyonlar.html    Filtrelenebilir ürün galerisi + lightbox
 ├── hakkimizda.html       Hikâye, değerler, showroom, kurucu alıntısı
 ├── iletisim.html         Randevu formu + iletişim bilgileri + harita
@@ -46,7 +46,8 @@ bağlantısı değiştirildiğinde dört HTML dosyasının da güncellenmesi ger
 
 ## Marka adını değiştirme
 
-"Mira Couture" ve alt başlık "Gelinlik & Couture Atölyesi" placeholder'dır.
+"Saray Bridal" ve alt başlık "Gelinlik & Couture" metin olarak dört HTML
+dosyasına yazılmıştır.
 Değiştirmek için dört HTML dosyasında şu yerleri düzenleyin:
 
 | Nerede | Ne |
@@ -54,14 +55,14 @@ Değiştirmek için dört HTML dosyasında şu yerleri düzenleyin:
 | `<title>` ve `<meta name="description">` | Sayfa başlığı ve açıklaması |
 | `.brand-name` / `.brand-tag` (header) | Sol üstteki marka adı |
 | `.footer-brand` (footer) | Footer'daki marka adı ve kısa tanıtım |
-| Footer alt satırı | `© Mira Couture` |
-| `assets/css/style.css` → `.ph::before` ve `.form-success .mono` | Görsel yer tutucudaki **"M" monogramı** — yeni markanın baş harfiyle değiştirin |
+| Footer alt satırı | `© Saray Bridal` |
+| `assets/css/style.css` → `.ph::before` ve `.form-success .mono` | Görsel yer tutucudaki **"S" monogramı** — yeni markanın baş harfiyle değiştirin |
 
 Hızlı yöntem (tüm dosyalarda toplu değiştirme):
 
 ```bash
 cd gelinlik-prototip
-grep -rl "Mira Couture" . | xargs sed -i 's/Mira Couture/YENİ MARKA/g'
+grep -rl "Saray Bridal" . | xargs sed -i 's/Saray Bridal/YENİ MARKA/g'
 ```
 
 ---
@@ -123,11 +124,37 @@ Sunum öncesi gerçek bilgilerle değiştirilmesi gereken alanlar:
 
 - **Telefon:** `0 (5xx) xxx xx xx` ve `tel:+905000000000` bağlantıları
 - **WhatsApp:** `https://wa.me/905000000000`
-- **E-posta:** `merhaba@miracouture.com`
-- **Adres:** "Muratpaşa, Antalya" (footer, iletişim kartı, harita `iframe`)
+- **E-posta:** `info@saraybridal.com` — henüz doğrulanmamış bir placeholder'dır,
+  mağazanın gerçek adresiyle değiştirin
+- **Adres:** "Işıklar Caddesi, Muratpaşa / Antalya" **placeholder'dır** — footer, iletişim kartı,
+  harita `iframe`'i ve `map-fallback` metnindeki adresi mağazanın gerçek açık
+  adresiyle (sokak, no, kat) değiştirin
 - **Sosyal medya:** Instagram / Facebook / Pinterest bağlantıları ana sayfalara gidiyor
-- **Model isim ve kodları:** Serena/MC-2601 vb. örnek verilerdir
-- **Gelin yorumları:** örnek metinlerdir, gerçek yorumlarla değiştirilmelidir
+- **Model isim ve kodları:** Serena/SB-2601 vb. örnek verilerdir
+- **Gelin yorumları:** örnek metinlerdir. Bant "Google Yorumları" başlığını
+  taşıdığı için yayına almadan önce mağazanın Google işletme profilindeki
+  gerçek yorumlarla (yorum sahibinin adı kısaltılarak, ör. "Ayşe K.")
+  birebir değiştirilmelidir
+
+### Sayı ve süre içeren ifadeleri mutlaka teyit edin
+
+Ana sayfadaki istatistik satırı ("%100 el işçiliği", "1–3 prova",
+"3 hafta ortalama teslim"), süreç adımlarındaki süreler ve "düğün haftası son
+kontrol ücretsizdir" gibi vaatler **taslak metinlerdir.** Yayına almadan önce
+her birini mağazayla teyit edin; karşılığı olmayanları çıkarın.
+
+Aynı şekilde, siteye bilinçli olarak **kuruluş yılı, deneyim yılı, ekip
+büyüklüğü veya diploma/ödül gibi doğrulanamayan spesifik iddialar
+eklenmemiştir.** Bu tür bilgileri yalnızca mağaza sahibi onayladıktan sonra ekleyin.
+
+### Hikâye bölümü hakkında
+
+`index.html` içindeki "Bir elbiseden fazlası" bölümü ile `hakkimizda.html`
+hikâye metinleri, atölyenin kurucusu **Elif Hanım**'ın çalışma biçimini anlatır.
+Alıntı ve imza satırı ("— Elif · Saray Bridal Kurucusu") mağazayla birlikte
+gözden geçirilmeli; isim, unvan ve alıntının ifadesi onun onayıyla
+kesinleştirilmelidir. Bölümdeki portre görseli de stok fotoğraftır ve
+atölyenin kendi çekimiyle değiştirilmelidir.
 
 ### Randevu formu çalışmıyor (bilinçli)
 

@@ -1,4 +1,4 @@
-/* Mira Couture — prototip etkileşimleri (vanilla JS, bağımlılık yok) */
+/* Saray Bridal — prototip etkileşimleri (vanilla JS, bağımlılık yok) */
 (function () {
   "use strict";
 
