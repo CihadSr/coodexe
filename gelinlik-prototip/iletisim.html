@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>İletişim &amp; Randevu — Mira Couture</title>
+  <meta name="description" content="Mira Couture randevu formu, adres ve iletişim bilgileri. Muratpaşa, Antalya.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+
+  <div class="announce">
+    Provalar randevu iledir · WhatsApp:
+    <a href="https://wa.me/905000000000">0 (5xx) xxx xx xx</a>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-name">Mira Couture</span>
+        <span class="brand-tag">Gelinlik &amp; Couture Atölyesi</span>
+      </a>
+
+      <div class="header-actions">
+        <nav class="nav-desktop" aria-label="Ana menü">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+            <li><a class="nav-link" href="koleksiyonlar.html">Koleksiyonlar</a></li>
+            <li><a class="nav-link" href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a class="nav-link" href="iletisim.html" aria-current="page">İletişim</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--ghost btn--sm nav-desktop" href="#randevu-form">Randevu Al</a>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobil-menu">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Menüyü aç</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-overlay" id="mobil-menu">
+    <button class="nav-overlay-close" type="button" aria-label="Menüyü kapat">&times;</button>
+    <nav class="wrap" aria-label="Mobil menü">
+      <ul>
+        <li><a class="nav-overlay-link" href="index.html">Ana Sayfa</a></li>
+        <li><a class="nav-overlay-link" href="koleksiyonlar.html">Koleksiyonlar</a></li>
+        <li><a class="nav-overlay-link" href="hakkimizda.html">Hakkımızda</a></li>
+        <li><a class="nav-overlay-link" href="iletisim.html" aria-current="page">İletişim</a></li>
+      </ul>
+      <a class="btn btn--solid" href="#randevu-form">Randevu Al</a>
+    </nav>
+  </div>
+
+  <main id="icerik">
+
+    <section class="page-head">
+      <div class="wrap wrap--narrow">
+        <span class="eyebrow">Randevu</span>
+        <h1 class="display">İletişim</h1>
+        <p class="lede">
+          Provalarımız randevu ile yapılır. Aşağıdaki formu doldurun ya da
+          doğrudan arayın; size uygun günü birlikte belirleyelim.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap contact-grid">
+
+        <!-- Sol: randevu formu -->
+        <div class="reveal">
+          <span class="eyebrow">Randevu formu</span>
+          <h2 class="h-sec">Yerinizi ayırtın</h2>
+
+          <form id="randevu-form" novalidate>
+            <div class="form-field">
+              <label for="ad">Ad Soyad</label>
+              <input type="text" id="ad" name="ad" autocomplete="name" required>
+              <span class="field-error" role="alert"></span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="telefon">Telefon</label>
+                <input type="tel" id="telefon" name="telefon" autocomplete="tel"
+                       placeholder="05xx xxx xx xx" required>
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="eposta">E-posta</label>
+                <input type="email" id="eposta" name="eposta" autocomplete="email" required>
+                <span class="field-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="tarih">Tercih Edilen Tarih</label>
+                <input type="date" id="tarih" name="tarih">
+                <span class="field-error" role="alert"></span>
+              </div>
+
+              <div class="form-field">
+                <label for="hizmet">Hizmet</label>
+                <select id="hizmet" name="hizmet" required>
+                  <option value="">Seçiniz</option>
+                  <option value="gelinlik">Gelinlik</option>
+                  <option value="nisanlik">Nişanlık</option>
+                  <option value="abiye">Abiye</option>
+                  <option value="kina">Kına &amp; Bindallı</option>
+                </select>
+                <span class="field-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="mesaj">Mesajınız</label>
+              <textarea id="mesaj" name="mesaj"
+                        placeholder="Düğün tarihiniz, mekân ve aklınızdaki model hakkında kısa bir not…"></textarea>
+              <span class="field-error" role="alert"></span>
+            </div>
+
+            <button class="btn btn--solid" type="submit">Gönder</button>
+
+            <p class="form-note">
+              Bu bir prototiptir; form gerçek bir sunucuya gönderilmez.
+              Bilgileriniz hiçbir yere kaydedilmez.
+            </p>
+          </form>
+
+          <div class="form-success" id="form-success" hidden>
+            <span class="mono" aria-hidden="true">M</span>
+            <h3>Teşekkür ederiz</h3>
+            <p>
+              Talebiniz alındı, en kısa sürede dönüş yapacağız.
+              Acil bir durumda bize WhatsApp'tan da ulaşabilirsiniz.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sağ: bilgiler + harita -->
+        <div class="reveal">
+          <span class="eyebrow">Bize ulaşın</span>
+          <h2 class="h-sec">Atölye bilgileri</h2>
+
+          <div class="info-list">
+            <div class="info-card">
+              <h3>Adres</h3>
+              <p>Muratpaşa, Antalya</p>
+            </div>
+
+            <div class="info-card">
+              <h3>Telefon</h3>
+              <p><a href="tel:+905000000000">0 (5xx) xxx xx xx</a></p>
+            </div>
+
+            <div class="info-card">
+              <h3>E-posta</h3>
+              <p><a href="mailto:merhaba@miracouture.com">merhaba@miracouture.com</a></p>
+            </div>
+
+            <div class="info-card">
+              <h3>Çalışma Saatleri</h3>
+              <p>Pazartesi – Cumartesi: 10:00 – 19:00<br>Pazar: Randevu ile</p>
+            </div>
+          </div>
+
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps?q=Muratpa%C5%9Fa%2C%20Antalya&amp;output=embed"
+              title="Mira Couture atölyesinin bulunduğu Muratpaşa, Antalya bölgesi haritası"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p class="map-fallback">
+            <strong>Adres</strong>
+            Muratpaşa, Antalya · Showroom girişi sokak üzerindedir,
+            ziyaretçi otoparkı bina yanındadır.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section band-dark cta-band">
+      <div class="wrap reveal">
+        <span class="eyebrow eyebrow--light">Hızlı iletişim</span>
+        <h2 class="h-sec">Aklınıza takılan bir şey mi var?</h2>
+        <p class="lede">
+          Fiyat aralığı, teslim süresi ya da kumaş seçenekleri hakkında
+          hemen bilgi almak için yazabilirsiniz.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--solid" href="tel:+905000000000">Hemen Arayın</a>
+          <a class="btn btn--ghost-light" href="https://wa.me/905000000000">WhatsApp'tan Yazın</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <span class="brand-name">Mira Couture</span>
+          <span class="brand-tag">Gelinlik &amp; Couture Atölyesi</span>
+          <p>
+            Antalya'da kişiye özel gelinlik, nişanlık, abiye ve kına kıyafetleri
+            tasarlayan couture atölyesi.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Hızlı Bağlantılar</h3>
+          <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="koleksiyonlar.html">Koleksiyonlar</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>İletişim</h3>
+          <ul>
+            <li>Muratpaşa, Antalya</li>
+            <li><a href="tel:+905000000000">0 (5xx) xxx xx xx</a></li>
+            <li><a href="mailto:merhaba@miracouture.com">merhaba@miracouture.com</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Çalışma Saatleri</h3>
+          <ul>
+            <li>Pazartesi – Cumartesi: 10:00 – 19:00</li>
+            <li>Pazar: Randevu ile</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> Mira Couture. Tüm hakları saklıdır.</p>
+        <div class="socials">
+          <a href="https://instagram.com" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5"/>
+              <circle cx="12" cy="12" r="4.2"/>
+              <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H16.7V3.6c-.3 0-1.3-.1-2.45-.1-2.4 0-4.05 1.5-4.05 4.2v2.2H7.5V13h2.7v8h3.3z"/>
+            </svg>
+          </a>
+          <a href="https://pinterest.com" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.5a9.5 9.5 0 0 0-3.5 18.3c-.08-.77-.15-1.96.03-2.8.17-.77 1.1-4.9 1.1-4.9s-.28-.56-.28-1.4c0-1.3.76-2.28 1.7-2.28.8 0 1.19.6 1.19 1.33 0 .8-.51 2-.78 3.12-.22.94.47 1.7 1.4 1.7 1.67 0 2.96-1.77 2.96-4.32 0-2.26-1.62-3.84-3.94-3.84-2.69 0-4.26 2-4.26 4.08 0 .8.31 1.67.7 2.14.08.1.09.18.07.28-.08.31-.25.94-.28 1.07-.04.18-.15.22-.34.13-1.25-.58-2.03-2.4-2.03-3.86 0-3.14 2.28-6.03 6.58-6.03 3.45 0 6.14 2.46 6.14 5.75 0 3.43-2.16 6.2-5.17 6.2-1.01 0-1.96-.53-2.29-1.15l-.62 2.38c-.22.87-.83 1.95-1.24 2.61A9.5 9.5 0 1 0 12 2.5z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
