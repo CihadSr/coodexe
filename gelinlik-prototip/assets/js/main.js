@@ -4,6 +4,68 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Görsel yedekleme ----------
+     Bir görsel yüklenemezse `data-fallback` içindeki sıradaki Unsplash
+     foto ID'siyle yeniden denenir; sorgu parametreleri (w/h/fit/crop/…)
+     korunur. Yedekler tükenince görsel gizlenir. Deneme indeksi
+     elemanın kendisinde (data-fb-index) tutulur, böylece döngü oluşmaz. */
+  function initImageFallback() {
+    var PHOTO_BASE = "https://images.unsplash.com/photo-";
+
+    function queryOf(src) {
+      var i = src.indexOf("?");
+      return i > -1 ? src.slice(i) : "";
+    }
+
+    // Görselin özgün sorgu dizesini bir kez saklar (kırık src sonrası da korunur).
+    function register(img) {
+      if (img.dataset.fbQuery === undefined) {
+        img.dataset.fbQuery = queryOf(img.getAttribute("src") || "");
+      }
+    }
+
+    function fallbacks(img) {
+      return (img.getAttribute("data-fallback") || "")
+        .split(/\s+/)
+        .filter(function (id) { return id !== ""; });
+    }
+
+    function handle(img) {
+      if (img.dataset.fbDone === "1") return;      // zaten pes edildi
+      if (!img.getAttribute("src")) return;        // src yoksa dokunma (ör. boş lightbox)
+
+      register(img);
+
+      var ids = fallbacks(img);
+      var index = parseInt(img.dataset.fbIndex || "0", 10);
+      if (isNaN(index) || index < 0) index = 0;
+
+      if (index < ids.length) {
+        img.dataset.fbIndex = String(index + 1);
+        var query = queryOf(img.getAttribute("src") || "") || img.dataset.fbQuery || "";
+        img.setAttribute("src", PHOTO_BASE + ids[index] + query);
+        return;
+      }
+
+      // Yedek kalmadı: eski inline onerror davranışının aynısı.
+      img.dataset.fbDone = "1";
+      img.style.display = "none";
+    }
+
+    // `error` baloncuk yapmaz; yakalama fazında dinlenir. Böylece sonradan
+    // eklenen görseller (ör. görsel seçim tahtası) de kapsanır.
+    document.addEventListener("error", function (e) {
+      var el = e.target;
+      if (el && el.tagName === "IMG") handle(el);
+    }, true);
+
+    // main.js yüklenmeden önce hata vermiş görselleri de yakala.
+    Array.prototype.forEach.call(document.images, function (img) {
+      register(img);
+      if (img.complete && img.naturalWidth === 0 && img.getAttribute("src")) handle(img);
+    });
+  }
+
   /* ---------- Mobil menü ---------- */
   function initMenu() {
     var toggle = document.querySelector(".nav-toggle");
@@ -263,6 +325,7 @@
   }
 
   function init() {
+    initImageFallback();
     initMenu();
     initHeader();
     initReveal();
