@@ -1057,3 +1057,78 @@ a:hover > .ph--zoom img,
   .models { gap: 32px; }
   .gallery { gap: 32px; }
 }
+
+/* ---------- 15. Görsel Seçim Tahtası (gorsel-secim.html — iç kullanım) ---------- */
+/* Yalnızca seçim sayfasında kullanılır; sitenin müşteriye açık sayfalarını
+   etkilemez. Kartlar mevcut .gallery ızgarasını ve .ph görsel kutusunu
+   yeniden kullanır, üzerine yalnızca kod/açıklama tipografisi eklenir. */
+
+/* figure varsayılan yan boşluğu ızgarada yatay taşmaya yol açar; sıfırlanır */
+.pick { margin: 0; }
+
+.pick-caption { display: block; }
+
+/* Kod (V1, G2 …) — müşterinin bize ileteceği asıl bilgi, belirgin olmalı */
+.pick-code {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: .1em;
+  color: var(--c-gold-deep);
+}
+
+.pick-desc {
+  display: block;
+  font-size: .9rem;
+  line-height: 1.5;
+  color: var(--c-ink-60);
+}
+
+/* Kapanış notu */
+.pick-note-band { padding-bottom: var(--sp-section); }
+.pick-note {
+  margin: 0;
+  padding: 26px 28px;
+  border: 1px solid var(--c-line);
+  background: var(--c-powder);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Seçim yolları (mağaza çekimi / Unsplash araması) */
+.pick-option {
+  border-top: 1px solid var(--c-line);
+  padding-top: 24px;
+  margin-bottom: 34px;
+}
+.pick-option h3 {
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+.pick-option p {
+  color: var(--c-ink-60);
+  font-size: .98rem;
+  max-width: 60ch;
+  margin-bottom: 18px;
+}
+
+/* Boş kalabilecek kartlar hakkında uyarı kutusu */
+.pick-warn {
+  margin: 0;
+  padding: 20px 22px;
+  border-left: 2px solid var(--c-gold);
+  background: #fff;
+  font-size: .92rem;
+  line-height: 1.65;
+  color: var(--c-ink-60);
+}
+.pick-warn strong {
+  display: block;
+  color: var(--c-ink);
+  font-weight: 400;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: 10px;
+  margin-bottom: 6px;
+}
